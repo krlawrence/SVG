@@ -1,0 +1,41 @@
+<html>
+<head>
+<meta name='description' content='Simple lighting filter effect.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='2012-06-11 14:12:10 -0500' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'>
+<defs>
+  <rect id="r1" x="50" y="20" width="400" height="150" />  
+  
+  <clipPath id="clip1">
+    <use xlink:href="#r1"/>
+  </clipPath>
+</defs>  
+
+<use xlink:href="#r1" fill="black" />
+
+<circle cx="0" cy="100" r="40" fill="blue" clip-path="url(#clip1)">  
+  <animate id="c1" attributeName="cx" from="0" to="400" dur="4s" fill="freeze"/>  
+</circle>  
+
+<circle cx="0" cy="100" r="40" fill="yellow"  clip-path="url(#clip1)">  
+  <animate id="c2" attributeName="cx" from="0" to="300" dur="3s" 
+           fill="freeze" begin="c1.end"/>  
+</circle>  
+
+<circle cx="0" cy="100" r="40" fill="orange"  clip-path="url(#clip1)">  
+  <animate id="c3" attributeName="cx" from="0" to="200" dur="2s"
+           fill="freeze" begin="c2.end"/>  
+</circle>  
+
+<circle cx="0" cy="100" r="40" fill="lightgreen"  clip-path="url(#clip1)">  
+  <animate id="c4" attributeName="cx" from="0" to="100" dur="1s" 
+           fill="freeze" begin="c3.end"/>  
+</circle>  
+
+
+</svg>
+</body>
+</html>

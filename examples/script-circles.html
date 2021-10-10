@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Animated circles using script</title>
+<meta name='description' content='Uses script to animate some circles.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Mon Jul 14 11:49:00 2013 CDT' />
+
+<script> 
+c    = null;
+rmin = 5;
+rmax = 100;
+d    = 1;
+
+// LATER: Once the HTML5 spec and implementations stabilize, it will likely
+//        be appropriate to use requestAnimationFrame instead of a generic
+//        timer function based on setInterval.
+
+function init()
+{
+  c = document.getElementById("c2") ;
+}                
+
+function start()
+{
+  document.getElementById("btnStart").disabled=true ;
+  document.getElementById("btnStop").disabled=false ;
+  intv = window.setInterval("move()",16);
+}
+
+function stop()
+{
+  document.getElementById("btnStart").disabled=false ;
+  document.getElementById("btnStop").disabled=true;
+  window.clearInterval(intv);
+}
+
+function move()
+{
+  r = parseInt(c.getAttribute("r")) ;
+
+  if ( r < rmin || r >= rmax)
+  {
+    d = -d ;
+/*  
+  if ( r < rmin)
+  {
+    d = -d ;
+   
+    red = Math.floor(Math.random()*255); 
+    grn = Math.floor(Math.random()*255); 
+    blu = Math.floor(Math.random()*255); 
+    col = "rgb("+red+","+grn+","+blu+")" ;
+    c.setAttribute("fill",col);     
+  }  
+  else if (r >= rmax)
+  {         
+    d = -d ;
+  }
+
+*/
+ }
+  r = r + d;
+  c.setAttribute("r",r); 
+
+}
+
+</script>                             
+</head>
+
+<body onload="init()">
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='820' height='400'>
+  <circle id="c1" cx="300" cy="300" r="100" fill="chocolate" />
+  <circle id="c2" cx="300" cy="300" r="5" fill="white" />
+</svg>       
+
+<br><br>
+<button onClick="start()" id="btnStart">Start</button>  
+<button onClick="stop()" id="btnStop" disabled="true">Stop</button> 
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='description' content='Example of using script to adjust SVG fill opacity' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Sat Mar 30 21:20:33 CDT 2013' />
+
+<script> 
+
+fo   = 1 ;
+rect = null ;
+txt  = null ;
+sldr = null ;
+
+// -----------------------------------------------------------------------------
+// init
+// -----------------------------------------------------------------------------
+function init()
+{
+  rect = document.getElementById("r1");
+  txt  = document.getElementById("t1");
+  sldr = document.getElementById("slider1"); 
+}
+
+// -----------------------------------------------------------------------------
+// doUpdate
+// -----------------------------------------------------------------------------
+function doUpdate(increase)
+{    
+  num   = parseFloat(rect.getAttribute("fill-opacity"));
+  if (increase)
+  {
+    num += 0.1
+    if (num > 1.0) { num = 1}
+  }
+  else
+  {
+    num -= 0.1
+    if (num < 0.0) { num = 0}
+  }
+  // Allow for javascript rounding errors 
+  num = num.toFixed(1);
+  updateText(num) ;  
+}
+
+// -----------------------------------------------------------------------------
+// doSlider
+// -----------------------------------------------------------------------------
+function doSlider()
+{
+  num = sldr.value ;
+  updateText(num) ;
+}
+
+// -----------------------------------------------------------------------------
+// updateText
+// -----------------------------------------------------------------------------
+function updateText( val )
+{
+  fo = val ;
+
+  // Set the new opacity value and update the displayed value.
+  rect.setAttribute("fill-opacity",fo);
+  txt.textContent = fo;
+  sldr.value = fo ;  
+}
+
+</script>                             
+</head>
+
+<body onload="init()">
+<h3>Opacity test</h3>
+Click a button or move the slider (if available) to adjust the opacity. The slider
+is an HTML 5 feature and not supported by all browsers currently.
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='300'>
+<circle cx="150" cy="150" r="35" fill="blue" />
+<g stroke="blue" stroke-width="4">
+  <line x1="150" y1="150" x2="50" y2="50"/>
+  <line x1="150" y1="150" x2="50" y2="150"/>
+  <line x1="150" y1="150" x2="50" y2="250"/>
+  <line x1="150" y1="150" x2="150" y2="250"/>
+  <line x1="150" y1="150" x2="250" y2="250"/>
+  <line x1="150" y1="150" x2="250" y2="150"/>
+  <line x1="150" y1="150" x2="250" y2="50"/>
+  <line x1="150" y1="150" x2="150" y2="50"/>
+</g>
+<rect x="48" y="48" width="204" height="204" fill="yellow" fill-opacity="1" id="r1"/>
+<text x="50" y="270" id="t1">1</text>
+</svg>
+<br><br>
+<button onClick="doUpdate(false)">-</button>  
+<input type="range" min="0" max="1" step="0.1" value="1" onchange="doSlider()" id="slider1"/>
+<button onClick="doUpdate(true)">+</button> 
+</body>
+</html>

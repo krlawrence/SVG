@@ -1,0 +1,22 @@
+<html>
+<head>
+<title>Adding markers to a poly line</title>
+<meta name='description' content='Adding markers to a poly line.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='2012-06-11 13:22:44 -0500' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'>
+<defs>
+<marker id="mk1"  refX="5" refY="5" markerWidth="10" markerHeight="10" 
+        orient="auto" fill="none" markerUnits="userSpaceOnUse">
+      <path d="M 0,0 h 10 v10 h-10z" fill="blue"/>
+</marker>
+</defs>
+
+<polyline points="50,50,100,200,150,50,200,200,250,50,300,200,350,50,400,200" 
+            stroke='black'fill="none" stroke-width="2"
+            marker-mid="url(#mk1)" marker-end="url(#mk1)" marker-start="url(#mk1)"/>
+</svg>
+</body>
+</html>

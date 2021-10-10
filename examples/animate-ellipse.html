@@ -1,0 +1,30 @@
+<html>
+<head>
+<meta name='description' content='Combines animation and opacity.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='2012-06-14 11:31:08 -0500' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'>
+<defs>
+  <pattern id="p1" patternUnits="userSpaceOnUse" patternContentUnits="userSpaceOnUse" width="450" height="300">
+    <image  xlink:href="./SydneyOperaHouse1.jpg" x="0" y="0" width="450" height="300"/>
+  </pattern>
+
+  <clipPath id="clip1">
+    <rect x="105" y="105" width="290" height="190" />
+  </clipPath>
+</defs>  
+
+<rect x="100" y="100" width="300" height="200" stroke="blue" stroke-width="10"
+      fill="black"  />
+
+<g clip-path="url(#clip1)">
+  <circle cx="250" cy="200" r="5" fill="url(#p1)" >
+    <animate attributeName="r" values="0;200;0" dur="10s" repeatCount="indefinite"/> 
+  </circle>
+</g>
+
+</svg>
+</body>
+</html>

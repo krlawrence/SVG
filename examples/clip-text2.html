@@ -1,0 +1,26 @@
+<html>
+<head>
+<meta name='description' content='Using clips in SVG to clip text inside text!' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='2012-06-12 09:55:25 -0500' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'>
+
+<defs>
+  <clipPath id="clip1" >
+    <text style="font-size:170;font-weight:bold" x="10" y="170">Leaves!</text>
+  </clipPath>
+
+  <pattern id="leaves" x="0" y="0" width="300" height="200" patternUnits="userSpaceOnUse">
+    <image width="300" height="200" xlink:href="./Leaves.jpg" />
+  </pattern>  
+</defs>
+ 
+<g clip-path="URL(#clip1)" >
+  <rect fill="URL(#leaves)" x="0" y="0" stroke="black"  width="700" height="500"/>
+</g>
+</svg>
+</body>
+</html>
+

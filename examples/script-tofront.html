@@ -1,0 +1,36 @@
+<html>
+<head>
+<meta name='description' content='Machine generated SVG using a Ruby script.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Fri Jun 08 14:42:32 -0500 2012' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'> 
+
+  <script type="text/ecmascript">
+  <![CDATA[
+
+    // The appendChild method moves the specified element to directly under the SVG
+    // element in the SVG DOM (effectively moving it to the 'front'.
+    function move_front(evt)
+    {
+      var group = evt.target.parentNode ;
+      group.appendChild( evt.target );
+    }
+
+  ]]>
+  </script>
+
+  <!-- As the mouse moves over a shape, move that shape to the top (front) -->
+  <text x="50" y="550" font-size="24">Move the mouse over a shape to bring it to the top!</text>
+  <g stroke="black" stroke-width="8">
+    <circle onmouseover="move_front(evt)" cx="400" cy="160" r="150" fill="blue"/>
+    <rect onmouseover="move_front(evt)" x="150" y="200" height="200" width="300" fill="green"/>
+    <ellipse onmouseover="move_front(evt)" cx="150" cy="300" rx="100" ry="200" fill="red" />
+    <circle  onmouseover="move_front(evt)" cx="150" cy="150" r="130" fill="yellow" />
+    <rect onmouseover="move_front(evt)" x="250" y="320" height="160" width="250" fill="orange"/>
+  </g>
+
+</svg>
+</body>
+</html>

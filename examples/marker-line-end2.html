@@ -1,0 +1,28 @@
+<html>
+<head>
+<title>Adding markers to a line ends</title>
+<meta name='description' content='Using markers to add arrows to line ends.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='2012-06-11 13:22:44 -0500' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'>
+<defs>
+  <marker id="arrowleft" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="4"
+          markerHeight="3" orient="auto" fill="black">
+    <path d="M 10,0 L 0,5 L 10,10 z" />
+  </marker>
+
+  <marker id="arrowright" viewBox="0 0 10 10" refX="0" refY="5" markerWidth="4"
+          markerHeight="3" orient="auto" fill="black">
+    <path d="M 0,0 L 10,5 L 0,10 z" />
+  </marker>
+</defs>
+
+<polyline points="50,50,100,200,150,50,200,200,250,50,300,200,350,50,400,200" 
+            stroke='black' fill="none" stroke-width="10"
+            marker-end="url(#arrowright)" marker-start="url(#arrowleft)"/>
+</svg>
+</body>
+</html>
+

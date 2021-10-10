@@ -1,0 +1,25 @@
+<html>
+<head>
+<meta name='description' content='Combining Beziers,textures and lines to make an anvil shape.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Sat Jun 16 12:35:01 -0500 2012' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'>
+<defs>
+  <pattern id="p1" patternUnits="userSpaceOnUse" patternContentUnits="userSpaceOnUse" width="225" height="225">
+    <image  xlink:href="./rust.jpg" x="0" y="0" width="225" height="225"/>
+  </pattern>  
+</defs>
+
+<g fill='url(#p1)'>
+  <path d='M50,100 
+	   c 0,200,200,0,200,200
+	   v10 h-50 v50 h-50 v 50 h 450 v-50 h-50 v-50 h-50
+	   v-10
+	   c 0,-200,200,0,200,-200 
+	   z'   fill-rule="winding"/>
+</g>
+</svg>
+</body>
+</html>

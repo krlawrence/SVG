@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   width="744.09448"
+   height="1052.3622"
+   id="svg2">
+  <defs
+     id="defs4">
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect5597" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect5593" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect5589" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect5585" />
+    <filter
+       x="0"
+       y="0"
+       width="1"
+       height="1"
+       color-interpolation-filters="sRGB"
+       id="filter3975">
+      <feTurbulence
+         result="result0"
+         baseFrequency="0.037"
+         numOctaves="3"
+         id="feTurbulence3977" />
+      <feSpecularLighting
+         result="result1"
+         specularConstant="1"
+         surfaceScale="2"
+         specularExponent="24.29999924"
+         id="feSpecularLighting3979">
+        <feDistantLight
+           azimuth="225"
+           elevation="45"
+           id="feDistantLight3981" />
+      </feSpecularLighting>
+      <feDiffuseLighting
+         result="result2"
+         diffuseConstant="1.21000004"
+         surfaceScale="3"
+         in="result0"
+         id="feDiffuseLighting3983">
+        <feDistantLight
+           elevation="42"
+           azimuth="225"
+           id="feDistantLight3985" />
+      </feDiffuseLighting>
+      <feBlend
+         in2="SourceGraphic"
+         mode="multiply"
+         result="result91"
+         id="feBlend3987" />
+      <feComposite
+         in2="result91"
+         operator="arithmetic"
+         k1="0"
+         k2="1"
+         k3="1"
+         k4="0"
+         in="result1"
+         result="result92"
+         id="feComposite3989" />
+      <feComposite
+         in2="SourceAlpha"
+         operator="in"
+         result="result2"
+         id="feComposite3991" />
+    </filter>
+  </defs>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1">
+    <g
+       transform="translate(233.01505,198.60496)"
+       id="g3811" />
+  </g>
+  <g
+     id="g5664">
+    <path
+       d="m 119.1875,128.0625 0,309.125 335.375,0 0,-309.125 -335.375,0 z M 286.875,221 c 32.35773,0 58.59375,27.5936 58.59375,61.625 0,34.0314 -26.23602,61.625 -58.59375,61.625 -32.35773,0 -58.59375,-27.5936 -58.59375,-61.625 0,-34.0314 26.23602,-61.625 58.59375,-61.625 z"
+       id="rect5745"
+       style="fill:#bdcdd4;fill-opacity:1;stroke:#280b0b" />
+  </g>
+</svg>

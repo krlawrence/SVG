@@ -1,0 +1,23 @@
+<html>
+<head>
+<meta name='description' content='Combining animation and mouse events.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Tue Jun 12 18:09:01 -0500 2012' />
+</head>
+<body>
+
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'> 
+  <text x="50" y="70" font-size="24">Move the mouse over the circle.</text>
+  <g stroke="blue" stroke-width="5" fill="cyan">
+    <circle id="c1" cx="300" cy="200" r="30" fill="powderblue">
+      <animate begin="mouseover" dur="500ms" repeatCount="5"
+                attributeType="XML" attributeName="r" to="100"/>
+      <animate />
+    </circle>
+  </g>  
+
+</svg>
+</body>
+</html>
+
+

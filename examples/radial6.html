@@ -1,0 +1,32 @@
+<html>
+<head>
+<meta name='description' content='Exploring radial gradients in SVG.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='2012-06-19 11:38:30 -0500' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'>
+<defs>
+  <radialGradient id="g1" cx="20%" cy="20%" r="100%" fx="30%" fy="30%">
+     <stop offset="0"    stop-color="#fff" />
+     <stop offset="25%"  stop-color="#d00"/>
+     <stop offset="50%"  stop-color="#b00" />
+     <stop offset="70%"  stop-color="#800000" />
+     <stop offset="85%"  stop-color="#400000"/>
+     <stop offset="100%" stop-color="#000"/>
+   </radialGradient>
+
+  <radialGradient id="g2" cx="50%" cy="50%" r="100%">
+     <stop offset="0%"   stop-color="#000" />
+     <stop offset="30%"  stop-color="#444"/>
+     <stop offset="60%"  stop-color="#999" />
+     <stop offset="75%"  stop-color="#bbb" />
+   </radialGradient>   
+</defs>
+
+<ellipse cx="180" cy="250" rx="100" ry="50" fill="url(#g2)"/>
+<circle cx="120" cy="150" r="100" fill="url(#g1)"/>
+
+</svg>
+</body>
+</html>

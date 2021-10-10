@@ -1,0 +1,24 @@
+<html>
+<head>
+<meta name='description' content='Shows how to flip the Y coordinate space' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Mon Jun 11 09:26:01 -0500 2012' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='400' height='400'>
+
+<text x="5" y="20" font-size="24">SVG Demo: Creating a mirror transform.</text>
+
+<path fill="blue" d="M50,200 h300 l-150,100 z" />  
+
+<g transform="matrix(1,0,0,-1,0,400)"> 
+  <path fill="yellow" d="M50,200 h300 l-150,100 z" />
+  <text x="170" y="195" fill="white" font-size="24">Mirror!</text>
+</g>
+
+<text x="170" y="195" fill="black" font-size="24">Mirror!</text>
+<line x1="30" y1="200" x2="370" y2="200" stroke-width="4" stroke="black" />  
+
+</svg>
+</body>
+</html>  

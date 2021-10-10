@@ -1,0 +1,22 @@
+<html>
+<head>
+<title>Adding markers to a polygon</title>
+<meta name='description' content='Adding markers to a polygon.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='2013-05-17 12:02:00 CDT' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'>
+<defs>
+  <marker id="mk1"  refX="5" refY="5" markerWidth="10" markerHeight="10" 
+          orient="auto" fill="none" markerUnits="userSpaceOnUse">
+    <circle cx="5" cy="5" r="5" fill="blue"/>
+  </marker>
+</defs>
+
+<polygon  fill='none' stroke='#ccc' stroke-width='2' 
+          points='200,50,343,154,288,321,112,321,57,154,200,50'
+          marker-mid="url(#mk1)" marker-end="url(#mk1)" marker-start="url(#mk1)"/>
+</svg>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Turbulence filter with other filters</title>
+<meta name='description' content='Turbulence filter with other filters.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Sat May  4 10:12:54 CDT 2013' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'>
+
+<defs>
+  <filter color-interpolation-filters="sRGB" id="f1">
+    <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="5"/>
+    <feColorMatrix values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 3 -1 " result="res0"/>
+    <feFlood result="res1" flood-color="#999" flood-opacity="1"/>
+    <feBlend in2="SourceGraphic" mode="normal" in="res1" result="res2"/>
+    <feComposite in2="res0" operator="out" result="res3"/>
+    <feComposite in2="SourceGraphic" operator="atop"/>
+  </filter>
+</defs>
+
+<rect  x="60"  y="90" width="280" height="280" fill="#a0522d" />   
+<rect  x="360" y="90" width="280" height="280" fill="#a0522d" filter="url(#f1)" />   
+<text x="60"  y="390">Before filter</text>
+<text x="360" y="390">After filter</text>
+</svg>
+</body>
+</html>
+

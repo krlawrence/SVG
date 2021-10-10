@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Turbulence filter</title>
+<meta name='description' content='Turbulence filter' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Sat May  4 10:12:54 CDT 2013' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'>
+
+<defs>
+  <filter id="t1">
+    <feTurbulence baseFrequency=".03" numOctaves="1"/>
+  </filter> 
+
+  <filter id="t2">
+    <feTurbulence baseFrequency=".02" numOctaves="2"/>
+  </filter>
+
+  <filter id="t3">
+    <feTurbulence baseFrequency=".03" numOctaves="3"/>
+  </filter>
+
+  <filter id="t4">
+    <feTurbulence baseFrequency=".03" numOctaves="4"/>
+  </filter>
+
+  <filter id="t5">
+    <feTurbulence baseFrequency=".03" numOctaves="5"/>
+  </filter>
+
+  <filter id="t6">
+    <feTurbulence baseFrequency=".03" numOctaves="10"/>
+  </filter> 
+</defs>
+
+<rect x="50"  y="50" height="200" width="200" filter="url(#t1)"/>
+<rect x="300" y="50" height="200" width="200" filter="url(#t2)"/>
+<rect x="550" y="50" height="200" width="200" filter="url(#t3)"/>
+<rect x="50"  y="350" height="200" width="200" filter="url(#t4)"/>
+<rect x="300" y="350" height="200" width="200" filter="url(#t5)"/>
+<rect x="550" y="350" height="200" width="200" filter="url(#t6)"/>
+<g fill="black">
+  <text x="50"  y="290">baseFrequency = 0.03</text>
+  <text x="50"  y="310">numOctaves = 1</text>
+  <text x="300" y="290">baseFrequency = 0.03</text>
+  <text x="300"  y="310">numOctaves = 2</text>
+  <text x="550" y="290">baseFrequency = 0.03</text>
+  <text x="550"  y="310">numOctaves = 3</text>
+  <text x="50"  y="590">baseFrequency = 0.03</text>
+  <text x="50"  y="610">numOctaves = 4</text>
+  <text x="300" y="590">baseFrequency = 0.03</text>
+  <text x="300"  y="610">numOctaves = 5</text>
+  <text x="550" y="590">baseFrequency = 0.03</text>
+  <text x="550"  y="610" fill="black">numOctaves = 10</text>
+</g>
+</svg>
+</body>
+</html>
+
+

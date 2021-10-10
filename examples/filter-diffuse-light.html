@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Using diffuse light and blur to create a 3D tile effect</title>
+<meta name='description' content='Using diffuse light and blur to create a 3D tile effect' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Sat May  4 12:53:00 CDT 2013' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1200' height='1000'>
+
+<defs>
+  <filter id="f2" color-interpolation-filters="sRGB" >
+    <feGaussianBlur in="SourceGraphic" stdDeviation="6" />
+    <feDiffuseLighting result="res1" surfaceScale="10" diffuseConstant="1">
+      <feDistantLight azimuth="235" elevation="25"/>
+    </feDiffuseLighting>
+    <feComposite in="res1" in2="SourceGraphic" operator="arithmetic" k1="1" k2="0" k3="0.6" k4="0" />
+  </filter>           
+  
+  <filter id="f1" color-interpolation-filters="sRGB" >
+    <feGaussianBlur in="SourceGraphic" stdDeviation="6" />
+    <feDiffuseLighting result="res1" surfaceScale="10" diffuseConstant="1">
+      <feDistantLight azimuth="235" elevation="25"/>
+    </feDiffuseLighting>
+  </filter>           
+</defs>
+
+<rect x="50"  y="100" width="200" height="200"  fill="#a05a2c"  />
+<rect x="400" y="100" width="200" height="200"  fill="#a05a2c" filter="url(#f1)" />
+<rect x="750" y="100" width="200" height="200"  fill="#a05a2c" filter="url(#f2)" />
+
+<g stroke-width="5" stroke="black">
+  <path d="M 285,200 h50 M310,175 v50 M660,190 h50 m0,20 h-50" />
+</g>
+</svg>
+</body>
+</html>
+
+

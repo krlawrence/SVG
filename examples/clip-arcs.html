@@ -1,0 +1,26 @@
+<html>
+<head>
+<meta name='description' content='Simple example of SVG clipping to a path.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Tue Jun 05 16:55:13 -0500 2012' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'>
+ 
+<defs>
+  <linearGradient id="grad1">
+    <stop offset="10%" stop-color="yellow"/>
+    <stop offset="90%" stop-color="red"/>
+  </linearGradient>
+
+  <clipPath id="clip1">
+    <path d=" M 220,200 A 100,100,0,1,1,320,200 A 100,100,0,1,1,220,200 z"
+	  clip-rule="evenodd" />
+  </clipPath>
+</defs>
+
+<rect x="150" y="0" width="240" height="600" fill="url(#grad1)" 
+      clip-path="URL(#clip1)" />
+</svg>
+</body>
+</html>

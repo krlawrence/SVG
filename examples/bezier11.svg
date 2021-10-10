@@ -1,0 +1,24 @@
+<?xml version="1.0" standalone="yes"?>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='500' height='500'>
+ 
+  <g fill="none" stroke="blue" > 
+    <path d="M 375,100 L 160,123 M 264,254 L 93,268" />"
+  </g>
+ 
+  <g fill="none" stroke="black" stroke-width="3"> 
+    <path d="M 375,100 C 160,123 264,254 93,268" />"
+  </g>
+ 
+  <g fill="red"  > 
+    <circle r="3" cx="375" cy="100"  />
+    <circle r="3" cx="160" cy="123"  />
+    <circle r="3" cx="264" cy="254"  />
+    <circle r="3" cx="93" cy="268"  />
+  </g>
+  <text x="360" y="100">0</text>
+  <text x="145" y="123">1</text>
+  <text x="249" y="254">2</text>
+  <text x="78" y="268">3</text>
+  <text x="20" y="298"> d="M 375,100 C 160,123 264,254 93,268" </text>
+ 
+</svg>

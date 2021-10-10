@@ -1,0 +1,34 @@
+<html>
+<head>
+<meta name='description' content='Example of animating a transform.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Sun Jun 17 11:12:01 -0500 2012' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'>
+<defs>
+  <pattern id="p1" patternUnits="userSpaceOnUse" patternContentUnits="userSpaceOnUse" width="225" height="225">
+    <image  xlink:href="./rust.jpg" x="0" y="0" width="225" height="225"/>
+  </pattern>  
+</defs>  
+
+  <path stroke="url(#p1)" fill="none" stroke-width="8" 
+        d="M195,704 L 250,270 h100 L 400,700,200,700 l180,-160,-142,-160 L350,270
+           M400,700 l-180,-160,142,-160 L250,270" transform="translate(0,-20)"/>
+
+<g stroke='none' fill='url(#p1)' stroke-width="4" transform='translate(300,300)'>
+  
+  <path d='M 200,0A 200,200,0,0,1,188,68L 23,19L 100,173A 200,200,0,0,1,35,197L -5,30L -100,173
+           A 200,200,0,0,1,-153,129L -28,10L -200,0A 200,200,0,0,1,-188,-68L -23,-19L -100,-173
+           A 200,200,0,0,1,-35,-197L 5,-30L 100,-173A 200,200,0,0,1,153,-129L 28,-10L 200,0 z' >
+
+   <animateTransform attributeName="transform" 
+                          attributeType="XML" type="rotate"
+                          dur="5s" values="0;360"
+                          repeatCount="indefinite" />  
+  </path>
+  <circle r="20" fill="url(#p1)" stroke-opacity="0.2" stroke="black"/>  
+</g>
+</svg>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SVG moving two polylines</title>
+<meta name='description' content='Uses script to move two polylines around.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Wed Apr 17 07:30:00 2013' />
+
+<script> 
+TOTAL_LINES = 2;
+p = new Array() ;
+points = new Array() ;
+r = 2 ;
+h = 600 ;
+w = 800 ;
+delta = 9;
+dx = new Array() ;
+dy = new Array() ;
+intv = null ;
+
+
+// LATER: Once the HTML5 spec and implementations stabilize, it will likely
+//        be appropriate to use requestAnimationFrame instead of a generic
+//        timer function based on setInterval.
+
+function init()
+{
+  for (i=0; i< TOTAL_LINES; i++)
+  {
+    p[i] = document.getElementById("p"+i) ;
+    dx[i] = delta ;
+    dy[i] = (i % 2 == 0) ? delta : -delta ;
+  }
+}     
+
+function reset()
+{
+  document.getElementById("p0").setAttribute("points","20,20,20,20" ) ;
+  document.getElementById("p1").setAttribute("points","20,580,20,580" ) ;
+}
+
+function start()
+{
+  document.getElementById("btnStart").disabled=true ;
+  document.getElementById("btnStop").disabled=false ;
+  intv = window.setInterval("move()",16);
+}
+
+function stop()
+{
+  document.getElementById("btnStart").disabled=false ;
+  document.getElementById("btnStop").disabled=true;
+  window.clearInterval(intv);
+}
+
+function newColors()
+{
+  for (i=0; i < TOTAL_LINES; i++)
+  {
+    red = Math.floor(Math.random()*255); 
+    grn = Math.floor(Math.random()*255); 
+    blu = Math.floor(Math.random()*255); 
+    clr = "rgb("+red+","+grn+","+blu+")" ;
+    p[i].setAttribute("stroke",clr);  
+    document.getElementById("txt"+i).value="RGB: "+red+","+grn+","+blu ;    
+  }  
+}
+
+function move()
+{
+  for (i=0; i < p.length; i++)
+  {
+    pts  = p[i].getAttribute("points") ;
+    ptsi = pts.split(",") ;
+
+    px = parseInt(ptsi[ptsi.length-2]) ;
+    py = parseInt(ptsi[ptsi.length-1]) ;
+    
+    addPoint = false ;
+    if ( py + r >= h)
+    {
+      dy[i] *= -1 ;
+      addPoint = true ;
+    }
+    if ( px + r >= w)
+    {
+      dx[i] *= -1
+      addPoint = true ;
+    }
+    if ( py - r <= 0)
+    {
+      dy[i] *= -1
+      addPoint = true ;
+    }
+    if ( px - r <= 0)
+    {
+      dx[i]  *= -1
+      addPoint = true ;
+    }
+
+    newy = py + dy[i] ;
+    newx = px + dx[i] ;
+
+    if ( addPoint )
+    {
+      // We changed direction so add a new point to the polyline.
+      newval = pts+","+newx+","+newy
+    }
+    else
+    {
+      // We have not changed direction so just modify the last point
+      // currently in the line (this is a performance optimization over
+      // adding a new point every time we move which could create massive
+      // point arrays quite quickly).
+      tmp = pts.substring(0,pts.lastIndexOf(","));
+      tmp = tmp.substring(0,tmp.lastIndexOf(","));
+      newval = tmp+","+newx+","+newy;
+    }  
+    p[i].setAttribute("points",newval);
+    document.getElementById("ta"+i).value = newval ;
+  }  
+}
+
+</script>                             
+</head>
+
+<body onload="init()">
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='820' height='610'>
+  <defs>
+    <clipPath id="clip1">
+      <path d="M0,0 h800 v600 h-800z"
+            clip-rule="evenodd" />
+    </clipPath>   
+  </defs>
+  <rect id="r1" x="0" y="0" width="800" height="600" fill="#eeeeee" stroke="black"/>
+  <g clip-path="URL(#clip1)" stroke-opacity="0.8" stroke-width="4" fill="none">
+    <polyline id="p0" points="20,20,20,20" stroke="#FF8600" />
+    <polyline id="p1" points="20,580,20,580" stroke="#600" />
+  </g>
+</svg>       
+
+<br>
+<button onClick="start()" id="btnStart">Start</button>  
+<button onClick="stop()"id="btnStop" disabled="true">Stop</button> 
+<button onClick="newColors()">New colors</button> 
+<button onClick="reset()">Reset</button>
+<input id="txt0" value="RGB: 255,134,0"></input>
+<input id="txt1" value="RGB: 102,0,0"></input>
+<br>
+<textarea id="ta0" rows="5" cols="90"></textarea>
+<br>
+<textarea id="ta1" rows="5" cols="90"></textarea>
+</body>
+</html>
+
+

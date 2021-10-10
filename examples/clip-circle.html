@@ -1,0 +1,36 @@
+<html>
+<head>
+<meta name='description' content='Simple example of SVG clipping.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='2012-06-05 11:32:24 -0500' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'>
+ 
+<defs>
+ <linearGradient id="grad1">
+    <stop offset="0%" stop-color="yellow"/>
+    <stop offset="100%" stop-color="red"/>
+  </linearGradient> 
+
+  <clipPath id="clip1">
+    <circle cx="200"  cy="150" r="100" />
+    <circle cx="50"   cy="50"  r="50"  />
+    <circle cx="350"  cy="50"  r="50"  />
+    <circle cx="50"   cy="260" r="50"  />
+    <circle cx="350"  cy="260" r="50"  />
+  </clipPath>
+</defs>
+
+<rect x="0" y="0" width="410" height="450" fill="url(#grad1)" 
+      clip-path="URL(#clip1)" />
+
+</svg>
+</body>
+</html>
+
+
+
+
+
+

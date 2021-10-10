@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SVG Bouncing ball</title>
+<meta name='description' content='Uses script to move some balls around in a simple snake pattern.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Wed Apr 17 12:26:00 CDT 2013' />
+
+<script> 
+TOTAL_CIRCLES = 18 ;
+c = new Array() ;
+rm = 10 ;
+h = 600 ;
+w = 800 ;
+d = 5;
+intv = null ;
+dx = new Array() ;
+dy = new Array() ;
+fillcol = "chocolate" ;
+
+// LATER: Once the HTML5 spec and implementations stabilize, it will likely
+//        be appropriate to use requestAnimationFrame instead of a generic
+//        timer function based on setInterval.
+
+function init()
+{
+  for (i=0; i < TOTAL_CIRCLES; i++)
+  {
+   c[i] = document.getElementById("c"+i) ;
+   dx[i] = d ;
+   dy[i] = d ;
+  }
+}                
+
+function start()
+{
+  document.getElementById("btnStart").disabled=true ;
+  document.getElementById("btnStop").disabled=false ;
+  intv = window.setInterval("move()",16);
+}
+
+function stop()
+{
+  document.getElementById("btnStart").disabled=false ;
+  document.getElementById("btnStop").disabled=true;
+  window.clearInterval(intv);
+}
+
+function move()
+{
+  for (i=0; i<c.length; i++)
+  {
+    cx = parseInt(c[i].getAttribute("cx")) ;
+    cy = parseInt(c[i].getAttribute("cy")) ;
+    
+    edge = false; 
+    if ( cy + rm >= h)
+    {
+      dy[i] = -d ;
+      edge = true ; 
+    }
+    if ( cx + rm >= w)
+    {
+      dx[i] = -d ;
+      edge = true ; 
+    }
+    if ( cy - rm <= 0)
+    {
+      dy[i] = d ;
+      edge = true ; 
+    }
+    if ( cx - rm <= 0)
+    {
+      dx[i] = d ;
+      edge = true ; 
+    }
+
+    if (edge && i==0 )
+    {
+      red = Math.floor(Math.random()*255); 
+      grn = Math.floor(Math.random()*255); 
+      blu = Math.floor(Math.random()*255); 
+      fillcol = "rgb("+red+","+grn+","+blu+")" ;
+    }
+
+    cx += dx[i];
+    cy += dy[i];
+    c[i].setAttribute("cx",cx);
+    c[i].setAttribute("cy",cy);
+    
+    if (edge)
+    {
+      c[i].setAttribute("fill",fillcol); 
+    } 
+  }                         
+}
+
+</script>                             
+</head>
+
+<body onload="init()">
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='820' height='620'>
+  <defs>
+    <clipPath id="clip1">
+      <path d="M0,0 h800 v600 h-800z"
+            clip-rule="evenodd" />
+    </clipPath>   
+  </defs>
+  <rect id="r1" x="0" y="0" width="800" height="600" fill="#eeeeee" stroke="black"/>
+  <g clip-path="URL(#clip1)" fill-opacity="0.95" fill="chocolate">
+    <circle id="c17" cx="70"  cy="70"  r="15" />
+    <circle id="c16" cx="85"  cy="85"  r="15" />
+    <circle id="c15" cx="100" cy="100" r="15" />
+    <circle id="c14" cx="115" cy="115" r="15" />
+    <circle id="c13" cx="130" cy="130" r="15" />
+    <circle id="c12" cx="145" cy="145" r="15" />
+    <circle id="c11" cx="160" cy="160" r="20" />
+    <circle id="c10" cx="180" cy="180" r="20" />
+    <circle id="c9"  cx="200" cy="200" r="20" />
+    <circle id="c8"  cx="220" cy="220" r="20" />
+    <circle id="c7"  cx="240" cy="240" r="20" />
+    <circle id="c6"  cx="260" cy="260" r="20" />
+    <circle id="c5"  cx="280" cy="280" r="20" />
+    <circle id="c4"  cx="300" cy="300" r="20" />
+    <circle id="c3"  cx="320" cy="320" r="20" />
+    <circle id="c2"  cx="340" cy="340" r="20" />
+    <circle id="c1"  cx="360" cy="360" r="20" />
+    <circle id="c0"  cx="380" cy="380" r="23"  />
+  </g>
+</svg>       
+
+<br><br>
+<button onClick="start()" id="btnStart">Start</button>  
+<button onClick="stop()"id="btnStop" disabled="true">Stop</button> 
+</body>
+</html>
+

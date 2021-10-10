@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='description' content=' Soccer pitch drawn using UEFA Category 4 stadium dimensions.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Thu Jun 21 08:54:12 -0500 2012' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000' >
+  <defs>
+    <clipPath id="clip1" clipPathUnits="userSpaceOnUse">
+      <rect x="18" y="0" width="25" height="75" />
+    </clipPath>
+
+    <clipPath id="clip2" clipPathUnits="userSpaceOnUse">
+      <rect x="72" y="0" width="25" height="75" />
+    </clipPath>
+    
+    <mask id="turflines" x="-5" y="-5" width="125" height="85">
+      <rect x="-5"  y="-5" width="10" height="85" fill="#ffffff" />
+      <rect x="5"   y="-5" width="10" height="85" fill="#dddddd" />
+      <rect x="15"  y="-5" width="10" height="85" fill="#ffffff" />
+      <rect x="25"  y="-5" width="10" height="85" fill="#dddddd" />
+      <rect x="35"  y="-5" width="10" height="85" fill="#ffffff" />
+      <rect x="45"  y="-5" width="10" height="85" fill="#dddddd" />
+      <rect x="55"  y="-5" width="10" height="85" fill="#ffffff" />
+      <rect x="65"  y="-5" width="10" height="85" fill="#dddddd" />
+      <rect x="75"  y="-5" width="10" height="85" fill="#ffffff" />
+      <rect x="85"  y="-5" width="10" height="85" fill="#dddddd" />
+      <rect x="95"  y="-5" width="10" height="85" fill="#ffffff" />
+      <rect x="105" y="-5" width="10" height="85" fill="#dddddd" />
+      <rect x="115" y="-5" width="10" height="85" fill="#ffffff" />
+    </mask>
+  </defs>
+
+  <g transform="translate(50,50) scale(6)" stroke="white" fill="none" stroke-width="0.5">
+
+    <!-- The grass/pitch outline -->
+    <rect x="-5" y="-5" width="125" height="85" fill="#006f00" stroke="none" mask="url(#turflines)"/>
+    <rect x="0" y="0" width="115" height="75" />
+
+    <!-- The centre circle and halfway line-->
+    <circle cx="57.5" cy="37.5" r="10"  />
+    <circle cx="57.5" cy="37.5" r="0.5" stroke="none" fill="white" />
+    <line x1="57.5" x2="57.5" y1="0" y2="75" />
+
+    <!-- Left hand side penalty area (18yd, 6yd, pen spot, "D") -->
+    <path d="M0,15.5 h18 v44 h-18"/>
+    <path d="m0,27.5 h6 v20 h-6"/>
+    <circle cx="12" cy="37.5" r="0.5" fill="white" stroke="none" />
+    <circle cx="12" cy="37.5" r="10" clip-path="url(#clip1)"/>
+
+     <!-- Right hand side penalty area (18yd, 6yd, pen spot, "D") -->
+    <path d="M115,15.5 h-18 v44 h18"/>
+    <path d="M115,27.5 h-6 v20 h6"/>
+    <circle cx="103" cy="37.5" r="0.5" fill="white" stroke="none" />
+    <circle cx="103" cy="37.5" r="10" clip-path="url(#clip2)"/> 
+
+    <!-- The goals -->
+    <path d="m0,33.5 h-2 v8 h2" />
+    <path d="m115,33.5 h2 v8 h-2" />
+
+    <!-- Corner quadrants -->
+    <path d="m0,2 a2,2,0,0,0,2,-2"/>
+    <path d="m0,73 a2,2,0,0,1,2,2"/>
+    <path d="m113,75 a2,2,0,0,1,2,-2"/>
+    <path d="m113,0 a2,2,0,0,0,2,2"/>
+
+    <text x="0" y="90" font-size="4" fill="#000" stroke="none" >
+      Soccer pitch drawn using UEFA Category 4 stadium dimensions.
+    </text>
+   
+  </g>
+
+</svg>
+</body>
+</html>

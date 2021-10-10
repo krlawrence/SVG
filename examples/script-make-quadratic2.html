@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SVG Path Tutor</title>
+<meta name='description' content='Allows interactive dragging of objects.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Fri May  3 19:56:14 CDT 2013' />   
+       
+<script type="text/ecmascript">
+
+NUM_POINTS = 3;
+line1 = null ;
+line2 = null ;
+rect  = null ;
+circ  = null ;
+quad  = null ;
+txt   = null ;
+points = new Array() ;
+
+fDragging = false ;
+        
+function mouseOver(evt)
+{
+  evt.preventDefault();
+  evt.target.setAttribute("fill","#0a0") ;
+}
+
+function mouseOut(evt)
+{
+  evt.preventDefault();
+  if ( !fDragging )
+  {
+    evt.target.setAttribute("fill","orange") ;
+  }
+}
+
+function mouseDown(evt)
+{
+  evt.preventDefault();
+  circ = evt.target ;
+  circ.addEventListener("mousemove", drag, false);
+  rect.addEventListener("mousemove", drag, false);
+  fDragging = true ;
+}
+
+function mouseUp(evt)
+{
+  evt.preventDefault();
+  circ.removeEventListener("mousemove",drag, false);
+  rect.removeEventListener("mousemove",drag, false);
+  fDragging = false ;
+}
+
+function drag(evt)
+{
+  x = evt.clientX-8 ;
+  //x = evt.clientX ;
+  //y = evt.clientY ;
+  y = evt.clientY-8 ;
+  circ.setAttribute("cx",x) ;
+  circ.setAttribute("cy",y) ; 
+
+  if ( circ.id == "c0" )
+  {
+    line1.setAttribute("x1",x) ; 
+    line1.setAttribute("y1",y) ; 
+    points[0] = x ;
+    points[1] = y ;
+  }
+  else if ( circ.id == "c1" )
+  {
+    line1.setAttribute("x2",x) ; 
+    line1.setAttribute("y2",y) ; 
+    line2.setAttribute("x1",x) ; 
+    line2.setAttribute("y1",y) ; 
+    points[2] = x ;
+    points[3] = y ;
+  }
+  else
+  {
+    line2.setAttribute("x2",x) ; 
+    line2.setAttribute("y2",y) ; 
+    points[4] = x ;
+    points[5] = y ;
+  }
+
+  d = "M"+points[0]+","+points[1]+" Q"+points[2]+","+points[3]+" "+points[4]+","+points[5]+"z" ;
+  quad.setAttribute("d", d) ;
+  txt.firstChild.nodeValue = d ;
+  
+}
+
+function init()
+{
+  n = 0;
+  for ( i=0; i < NUM_POINTS; i++ )
+  {
+    f = document.getElementById("c"+i) ;
+    f.addEventListener("mouseover", mouseOver, false);
+    f.addEventListener("mouseout", mouseOut, false);
+    f.addEventListener("mousedown", mouseDown, false);
+    f.addEventListener("mouseup", mouseUp, false);
+
+    points[n]   = f.getAttribute("cx") ;
+    points[n+1] = f.getAttribute("cy") ;
+    n += 2 ;
+  }
+  line1 = document.getElementById("line1") ;
+  line2 = document.getElementById("line2") ;
+  rect  = document.getElementById("r1") ;
+  quad  = document.getElementById("quad") ;
+  txt   = document.getElementById("txt") ;
+
+}
+</script> 
+</head>
+<body onload="init()" id="bdy">
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'>                                                                    
+  <defs>
+    <clipPath id="clip1">
+      <path d="M0,0 h800 v700 h-800z"
+            clip-rule="evenodd" />
+    </clipPath>   
+  </defs>
+  <rect id="r1" x="0" y="0" width="800" height="700" fill="#eeeeee" stroke="black"/>
+  <g clip-path="URL(#clip1)">
+    <line id="line1" x1="200" y1="400" x2="300" y2="227" stroke="blue" stroke-width="1"/>
+    <line id="line2" x1="300" y1="227" x2="400" y2="400" stroke="blue" stroke-width="1"/>
+    <path id="quad" d="M200,400 Q300,227 400,400z" stroke="black" fill="blanchedalmond" stroke-width="2" />
+    <circle id="c0" cx="200" cy="400" r="10" fill="orange" />
+    <circle id="c1" cx="300" cy="227" r="10" fill="orange" />
+    <circle id="c2" cx="400" cy="400" r="10" fill="orange" />
+    <text id="txt" x="600" y="690" fill="black">M200,400 Q300,227 400,400</text>
+  </g>
+  <text x="50" y="750" font-size="24">Click on a circle and drag it around!</text>
+</svg>
+</body>
+</html>
+

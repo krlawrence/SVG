@@ -1,0 +1,24 @@
+<html>
+<head>
+<meta name='description' content='Using masks in SVG.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='2012-06-12 08:39:01 -0500' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'>
+
+<defs>
+  <mask id="mask1" x="0" y="0" width="200" height="200">
+    <rect x="20" y="20" width="100" height="100" fill="#FFFFFF"/>
+    <rect x="120" y="120" width="100" height="100" fill="#FFFFFF"/>
+    <rect x="120" y="20" width="100" height="100" fill="#888888"/>
+    <rect x="20" y="120" width="100" height="100" fill="#444444"/>
+    <rect x="100" y="100" width="40" height="40" fill="#000000"/>
+  </mask>
+</defs>
+
+<rect x="20" y="20" width="200" height="200" fill="blue" mask="URL(#mask1)"/>
+
+</svg>
+</body>
+</html>

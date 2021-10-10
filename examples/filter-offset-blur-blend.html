@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Offset, Blend and Blur filters</title>
+<meta name='description' content='Offset, Blend and Blur filters' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Sat May  4 12:53:00 CDT 2013' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'>
+
+<defs>
+  <filter id="f1" x="0" y="0" width="120%" height="120%">
+    <feOffset result="offset" in="SourceAlpha" dx="20" dy="20" />
+    <feGaussianBlur result="blur" in="offset" stdDeviation="10" />
+    <feBlend in="SourceGraphic" in2="blur" mode="normal" />
+  </filter>
+</defs>
+
+<rect x="100"  y="100" height="300" width="300" fill="#cac" filter="url(#f1)"/>
+
+</svg>
+</body>
+</html>
+

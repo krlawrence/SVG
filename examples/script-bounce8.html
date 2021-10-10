@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SVG Bouncing balls</title>
+<meta name='description' content='Uses script to move a set of balls around.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Sun Apr 21 21:21:00 2013 CDT' />
+
+<script> 
+TOTAL_CIRCLES = 100;
+c = new Array() ;
+r = 25 ;
+h = 600 ;
+w = 800 ;
+d = 5;
+dx = new Array() ;
+dy = new Array() ;
+intv = null ;
+
+
+// LATER: Once the HTML5 spec and implementations stabilize, it will likely
+//        be appropriate to use requestAnimationFrame instead of a generic
+//        timer function based on setInterval.
+
+function init()
+{
+
+  for (i=0; i< TOTAL_CIRCLES; i++)
+  {
+    rx = 1;
+    ry = 1;
+    n1 = Math.floor((Math.random()*100)) ;
+    n2 = Math.floor((Math.random()*100)) ;
+    if (n1 > 50) {rx =-1} ;
+    if (n2 > 50) {ry =-1} ;
+
+    c[i]  = document.getElementById("c"+i) ;
+    //dx[i] = Math.floor((Math.random()*10)+1) * rx  ;
+    //dy[i] = Math.floor((Math.random()*10)+1) * ry  ;
+    dx[i] = Math.floor(10) * rx  ;
+    dy[i] = Math.floor(10) * ry  ;
+  }
+}     
+
+function randomize()
+{
+  for (i=0; i< TOTAL_CIRCLES; i++)
+  {
+    dx[i] = (dx[i]/Math.abs(dx[i])) * Math.floor((Math.random()*10)+1);
+    dy[i] = (dy[i]/Math.abs(dy[i])) * Math.floor((Math.random()*10)+1);
+    
+  }  
+}
+
+function start()
+{
+  document.getElementById("btnStart").disabled=true ;
+  document.getElementById("btnStop").disabled=false ;
+  intv = window.setInterval("move()",16);
+}
+
+function stop()
+{
+  document.getElementById("btnStart").disabled=false ;
+  document.getElementById("btnStop").disabled=true;
+  window.clearInterval(intv);
+}
+
+function move()
+{
+  for (i=0; i < c.length; i++)
+  {
+    cx = parseInt(c[i].getAttribute("cx")) ;
+    cy = parseInt(c[i].getAttribute("cy")) ;
+
+    if ( cy + r >= h)
+    {
+      dy[i] *= -1
+    }
+    if ( cx + r >= w)
+    {
+      dx[i] *= -1
+    }
+    if ( cy - r <= 0)
+    {
+      dy[i] *= -1
+    }
+    if ( cx - r <= 0)
+    {
+      dx[i]  *= -1
+    }
+
+    cx += dx[i];
+    cy += dy[i];
+    c[i].setAttribute("cx",cx);
+    c[i].setAttribute("cy",cy);
+  }  
+}
+
+</script>                             
+</head>
+
+<body onload="init()">
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='820' height='620'>
+  <defs>
+    <clipPath id="clip1">
+      <path d="M0,0 h800 v600 h-800z"
+            clip-rule="evenodd" />
+    </clipPath>   
+  </defs>
+  <rect id="r1" x="0" y="0" width="800" height="600" fill="#eeeeee" stroke="black"/>
+  <g clip-path="URL(#clip1)" fill-opacity="0.8">
+    <circle id="c0"  cx="400" cy="300" r="15" fill="blue" />
+    <circle id="c1"  cx="400" cy="300" r="15" fill="red" />
+    <circle id="c2"  cx="400" cy="300" r="15" fill="green" />
+    <circle id="c3"  cx="400" cy="300" r="15" fill="purple" />
+    <circle id="c4"  cx="400" cy="300" r="15" fill="orange" />
+    <circle id="c5"  cx="400" cy="300" r="15" fill="pink" />
+    <circle id="c6"  cx="400" cy="300" r="15" fill="chocolate" />
+    <circle id="c7"  cx="400" cy="300" r="15" fill="#000055" />
+    <circle id="c8"  cx="400" cy="300" r="15" fill="cyan" />
+    <circle id="c9"  cx="400" cy="300" r="15" fill="yellow" />
+    <circle id="c10" cx="400" cy="300" r="15" fill="salmon" />
+    <circle id="c11" cx="400" cy="300" r="15" fill="#334400" />
+    <circle id="c12" cx="400" cy="300" r="15" fill="#004433" />
+    <circle id="c13" cx="400" cy="300" r="15" fill="#44ff33" />
+    <circle id="c14" cx="400" cy="300" r="15" fill="#440033" />
+    <circle id="c15" cx="400" cy="300" r="15" fill="#330044" />
+    <circle id="c16" cx="400" cy="300" r="15" fill="#782615" />
+    <circle id="c17" cx="400" cy="300" r="15" fill="#A0ffb1" />
+    <circle id="c18" cx="400" cy="300" r="15" fill="#ffA0b1" />
+    <circle id="c19" cx="400" cy="300" r="15" fill="#b1ffb1" />
+    <circle id="c20" cx="400" cy="300" r="15" fill="#ffffb1" />
+    <circle id="c21" cx="400" cy="300" r="15" fill="#66ff44" />
+    <circle id="c22" cx="400" cy="300" r="15" fill="#29a3b4" />
+    <circle id="c23" cx="400" cy="300" r="15" fill="#3640ff" />
+    <circle id="c24" cx="400" cy="300" r="15" fill="#2299fa" />
+    <circle id="c25" cx="400" cy="300" r="15" fill="#5ff54f" />
+    <circle id="c26" cx="400" cy="300" r="15" fill="#335544" />
+    <circle id="c27" cx="400" cy="300" r="15" fill="#0066ff" />
+    <circle id="c28" cx="400" cy="300" r="15" fill="#ff1111" />
+    <circle id="c29" cx="400" cy="300" r="15" fill="#635312" />
+    <circle id="c30" cx="400" cy="300" r="15" fill="#126353" />
+    <circle id="c31" cx="400" cy="300" r="15" fill="#772354" />
+    <circle id="c32" cx="400" cy="300" r="15" fill="#b11212" />
+    <circle id="c33" cx="400" cy="300" r="15" fill="#093366" />
+    <circle id="c34" cx="400" cy="300" r="15" fill="#44ccdd" />
+    <circle id="c35" cx="400" cy="300" r="15" fill="#dd44cc" />
+    <circle id="c36" cx="400" cy="300" r="15" fill="#ccdd44" />
+    <circle id="c37" cx="400" cy="300" r="15" fill="#19a11a" />
+    <circle id="c38" cx="400" cy="300" r="15" fill="#1a19a1" />
+    <circle id="c39" cx="400" cy="300" r="15" fill="#1aa119" />
+    <circle id="c40" cx="400" cy="300" r="15" fill="#191919" />
+    <circle id="c41" cx="400" cy="300" r="15" fill="#333333" />
+    <circle id="c42" cx="400" cy="300" r="15" fill="#991111" />
+    <circle id="c43" cx="400" cy="300" r="15" fill="#990505" />
+    <circle id="c44" cx="400" cy="300" r="15" fill="#990000" />
+    <circle id="c45" cx="400" cy="300" r="15" fill="#aa0000" />
+    <circle id="c46" cx="400" cy="300" r="15" fill="#410000" />
+    <circle id="c47" cx="400" cy="300" r="15" fill="#540000" />
+    <circle id="c48" cx="400" cy="300" r="15" fill="#670000" />
+    <circle id="c49" cx="400" cy="300" r="15" fill="#dd0022" />
+    <circle id="c50" cx="400" cy="300" r="15" fill="#880035" />
+    <circle id="c51" cx="400" cy="300" r="15" fill="#350088" />
+    <circle id="c52" cx="400" cy="300" r="15" fill="#123456" />
+    <circle id="c53" cx="400" cy="300" r="15" fill="purple" />
+    <circle id="c54" cx="400" cy="300" r="15" fill="orange" />
+    <circle id="c55" cx="400" cy="300" r="15" fill="pink" />
+    <circle id="c56" cx="400" cy="300" r="15" fill="chocolate" />
+    <circle id="c57" cx="400" cy="300" r="15" fill="#000055" />
+    <circle id="c58" cx="400" cy="300" r="15" fill="cyan" />
+    <circle id="c59" cx="400" cy="300" r="15" fill="yellow" />
+    <circle id="c60" cx="400" cy="300" r="15" fill="salmon" />
+    <circle id="c61" cx="400" cy="300" r="15" fill="#334400" />
+    <circle id="c62" cx="400" cy="300" r="15" fill="#004433" />
+    <circle id="c63" cx="400" cy="300" r="15" fill="#44ff33" />
+    <circle id="c64" cx="400" cy="300" r="15" fill="#440033" />
+    <circle id="c65" cx="400" cy="300" r="15" fill="#330044" />
+    <circle id="c66" cx="400" cy="300" r="15" fill="#782615" />
+    <circle id="c67" cx="400" cy="300" r="15" fill="#A0ffb1" />
+    <circle id="c68" cx="400" cy="300" r="15" fill="#ffA0b1" />
+    <circle id="c69" cx="400" cy="300" r="15" fill="#b1ffb1" />
+    <circle id="c70" cx="400" cy="300" r="15" fill="#ffffb1" />
+    <circle id="c71" cx="400" cy="300" r="15" fill="#66ff44" />
+    <circle id="c72" cx="400" cy="300" r="15" fill="#29a3b4" />
+    <circle id="c73" cx="400" cy="300" r="15" fill="#3640ff" />
+    <circle id="c74" cx="400" cy="300" r="15" fill="#2299fa" />
+    <circle id="c75" cx="400" cy="300" r="15" fill="#5ff54f" />
+    <circle id="c76" cx="400" cy="300" r="15" fill="#335544" />
+    <circle id="c77" cx="400" cy="300" r="15" fill="#0066ff" />
+    <circle id="c78" cx="400" cy="300" r="15" fill="#ff1111" />
+    <circle id="c79" cx="400" cy="300" r="15" fill="#635312" />
+    <circle id="c80" cx="400" cy="300" r="15" fill="#126353" />
+    <circle id="c81" cx="400" cy="300" r="15" fill="#772354" />
+    <circle id="c82" cx="400" cy="300" r="15" fill="#b11212" />
+    <circle id="c83" cx="400" cy="300" r="15" fill="#093366" />
+    <circle id="c84" cx="400" cy="300" r="15" fill="#44ccdd" />
+    <circle id="c85" cx="400" cy="300" r="15" fill="#dd44cc" />
+    <circle id="c86" cx="400" cy="300" r="15" fill="#ccdd44" />
+    <circle id="c87" cx="400" cy="300" r="15" fill="#19a11a" />
+    <circle id="c88" cx="400" cy="300" r="15" fill="#1a19a1" />
+    <circle id="c89" cx="400" cy="300" r="15" fill="#1aa119" />
+    <circle id="c90" cx="400" cy="300" r="15" fill="#191919" />
+    <circle id="c91" cx="400" cy="300" r="15" fill="#333333" />
+    <circle id="c92" cx="400" cy="300" r="15" fill="#991111" />
+    <circle id="c93" cx="400" cy="300" r="15" fill="#990505" />
+    <circle id="c94" cx="400" cy="300" r="15" fill="#990000" />
+    <circle id="c95" cx="400" cy="300" r="15" fill="#aa0000" />
+    <circle id="c96" cx="400" cy="300" r="15" fill="#410000" />
+    <circle id="c97" cx="400" cy="300" r="15" fill="#540000" />
+    <circle id="c98" cx="400" cy="300" r="15" fill="#670000" />
+    <circle id="c99" cx="400" cy="300" r="15" fill="#dd0022" />
+  </g>
+</svg>       
+
+<br>
+<h3>Watch what happens the first time you randomize!</h3><br>
+<button onClick="start()" id="btnStart">Start</button>  
+<button onClick="stop()" id="btnStop" disabled="true">Stop</button> 
+<button onClick="randomize()">Randomize</button> 
+</body>
+</html>
+
+

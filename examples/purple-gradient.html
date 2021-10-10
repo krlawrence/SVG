@@ -1,0 +1,24 @@
+<html>
+<head>
+<meta name='description' content='Examples of linear gradients.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Fri Nov 9 09:23:00 -0500 2012' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'>
+
+<defs>
+
+<!-- Horizontal gradient -->
+  <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="rgb(70%,0%,30%)"/>
+    <stop offset="100%" stop-color="rgb(30%,0%,70%)"/>
+  </linearGradient>
+
+</defs> 
+
+<rect x="50" y="100" width="700" height="200" fill="url(#g1)" />
+
+</svg>
+</body>
+</html>

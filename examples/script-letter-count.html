@@ -1,0 +1,217 @@
+<html>
+<head>
+<meta name='description' content='Using SVG and script together' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='2014-08-25 10:24:00 -0500' />
+
+<script>
+var vals = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)
+var bars = new Array( "A","B","C","D","E","F","G","H","I","J","K","L",
+                      "M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z") ;
+
+
+//----------------------------------------------------------------------
+function init()
+{
+  doUpdate()
+}			
+
+//----------------------------------------------------------------------
+function doUpdate()
+{
+  // Get the text entered by the user
+  txt = document.getElementById("ta1").value.toUpperCase();
+
+  // Zero out the letter count array
+  for (i=0; i < vals.length; i++)
+  {
+    vals[i] = 0;
+  }
+
+  // Count the letters
+  for (i=0; i< txt.length; i++)
+  {
+    c = txt.charCodeAt(i) - 65 ;
+    vals[c] += 1;
+  }
+
+  // Now draw the bars
+  for( i=0; i < bars.length; i++ )
+  {
+    n = bars[i] ;
+    document.getElementById(n).setAttribute("height",vals[i]);
+  }
+}
+
+//----------------------------------------------------------------------
+function showTip(evt)
+{
+  // LATER: Need to find a proper way to calculate offset to start of 
+  // SVG viewport on the browsers display.
+  xoffset = 20;
+  yoffset = 200;
+
+  var x=evt.clientX;
+  var y=evt.clientY;
+
+  var node = evt.target.getAttribute("id");
+  var index = 0;
+ 
+  for( i=0; i < bars.length; i++ )
+  {
+    if (bars[i] == node)
+    {
+      index = i;
+      break;
+    }
+  }
+
+  var rct = document.getElementById("r1");
+  var txt = document.getElementById("t1");
+  rct.setAttribute("x",x-xoffset);
+  rct.setAttribute("y",y-yoffset);   
+  txt.setAttribute("x",x+10);   
+  txt.setAttribute("y",y+15-yoffset);  
+  txt.childNodes[0].nodeValue=vals[index];
+  document.getElementById("g1").setAttribute("visibility","visible");
+}
+
+//----------------------------------------------------------------------
+function hideTip()
+{
+  document.getElementById("g1").setAttribute("visibility","hidden");
+} 
+
+//----------------------------------------------------------------------
+function eraseText()
+{
+  document.getElementById("ta1").value = "" ;
+  doUpdate();
+}
+</script>
+</head>
+
+<body onLoad="init()">
+<h2>Script and SVG used to count letters and draw a graph</h2>
+Type some text into the entry field and click <b>Update</b> to see a bar graph representing the 
+distribution of letters used in the text. Note that upper and lower case letters are treated the same.
+Move the mouse over a bar to see its numerical value.
+ 
+<p style="font-size:36;color:blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Distribution of letters in the text
+<br>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='430'>
+  <Line X1="50" Y1="20" X2="50" Y2="400" Stroke="Blue" StrokeThickness="2"/>
+  <Line X1="50" Y1="400" X2="860" Y2="400" Stroke="Blue" StrokeThickness="2" id="xaxis"/>
+
+  <g transform="matrix(1 0 0 -1 0 400)" fill="purple"  
+     onmouseover="showTip(evt)" onmouseleave="hideTip()">
+    <rect y="1" x="60"  width="20" height="1" id="A"/> 
+    <rect y="1" x="90"  width="20" height="1" id="B" />
+    <rect y="1" x="120" width="20" height="1" id="C" />
+    <rect y="1" x="150" width="20" height="1" id="D" />
+    <rect y="1" x="180" width="20" height="1" id="E" />
+    <rect y="1" x="210" width="20" height="1" id="F" />
+    <rect y="1" x="240" width="20" height="1" id="G" />
+    <rect y="1" x="270" width="20" height="1" id="H" />
+    <rect y="1" x="300" width="20" height="1" id="I" />
+    <rect y="1" x="330" width="20" height="1" id="J" />
+    <rect y="1" x="360" width="20" height="1" id="K" />
+    <rect y="1" x="390" width="20" height="1" id="L" />
+    <rect y="1" x="420" width="20" height="1" id="M" />
+    <rect y="1" x="450" width="20" height="1" id="N" />
+    <rect y="1" x="480" width="20" height="1" id="O" />
+    <rect y="1" x="510" width="20" height="1" id="P" />
+    <rect y="1" x="540" width="20" height="1" id="Q" />
+    <rect y="1" x="570" width="20" height="1" id="R" />
+    <rect y="1" x="600" width="20" height="1" id="S" />
+    <rect y="1" x="630" width="20" height="1" id="T" />
+    <rect y="1" x="660" width="20" height="1" id="U" />
+    <rect y="1" x="690" width="20" height="1" id="V" />
+    <rect y="1" x="720" width="20" height="1" id="W" />
+    <rect y="1" x="750" width="20" height="1" id="X" />
+    <rect y="1" x="780" width="20" height="1" id="Y" />
+    <rect y="1" x="810" width="20" height="1" id="Z" />
+  </g>
+  <g font-size="18" fill="black">
+    <text y="0" x="0" transform="translate(65,420)">A</text>
+    <text y="0" x="0" transform="translate(95,420)">B</text>
+    <text y="0" x="0" transform="translate(125,420)">C</text>
+    <text y="0" x="0" transform="translate(155,420)">D</text>
+    <text y="0" x="0" transform="translate(185,420)">E</text>
+    <text y="0" x="0" transform="translate(215,420)">F</text>
+    <text y="0" x="0" transform="translate(245,420)">G</text>
+    <text y="0" x="0" transform="translate(275,420)">H</text>
+    <text y="0" x="0" transform="translate(305,420)">I</text>
+    <text y="0" x="0" transform="translate(335,420)">J</text>
+    <text y="0" x="0" transform="translate(365,420)">K</text>
+    <text y="0" x="0" transform="translate(395,420)">L</text>
+    <text y="0" x="0" transform="translate(425,420)">M</text>
+    <text y="0" x="0" transform="translate(455,420)">N</text>
+    <text y="0" x="0" transform="translate(485,420)">O</text>
+    <text y="0" x="0" transform="translate(515,420)">P</text>
+    <text y="0" x="0" transform="translate(545,420)">Q</text>
+    <text y="0" x="0" transform="translate(575,420)">R</text>
+    <text y="0" x="0" transform="translate(605,420)">S</text>
+    <text y="0" x="0" transform="translate(635,420)">T</text>
+    <text y="0" x="0" transform="translate(665,420)">U</text>
+    <text y="0" x="0" transform="translate(695,420)">V</text>
+    <text y="0" x="0" transform="translate(725,420)">W</text>
+    <text y="0" x="0" transform="translate(755,420)">X</text>
+    <text y="0" x="0" transform="translate(785,420)">Y</text>
+    <text y="0" x="0" transform="translate(815,420)">Z</text>
+  </g>
+
+  <g id="g1" visibility="hidden" font-size="12">
+    <rect x="0" y="0" width="80" height="20" id="r1" fill="thistle" fill-opacity="0.95"/>
+    <text x="10" y="5" fill="black" id="t1">0</text>
+  </g>
+</svg>
+<p>Enter some text below and then click Update to refresh the graph.
+<br>
+<textarea id="ta1" rows="5" cols="100">
+IT WAS the best of times, it was the worst of times, it was the age of wisdom, it was the age of
+foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of
+Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair, we
+had everything before us, we had nothing before us, we were all going direct to Heaven, we were all
+going direct the other way- in short, the period was so far like the present period, that some of
+its noisiest authorities insisted on its being received, for good or for evil, in the superlative
+degree of comparison only.
+
+There were a king with a large jaw and a queen with a plain face, on the throne of England; there
+were a king with a large jaw and a queen with a fair face, on the throne of France. In both
+countries it was clearer than crystal to the lords of the State preserves of loaves and fishes, that
+things in general were settled for ever.
+
+It was the year of Our Lord one thousand seven hundred and seventy-five.  Spiritual revelations were
+conceded to England at that favoured period, as at this. Mrs. Southcott had recently attained her
+five-and-twentieth blessed birthday, of whom a prophetic private in the Life Guards had heralded the
+sublime appearance by announcing that arrangements were made for the swallowing up of London and
+Westminster. Even the Cock-lane ghost had been laid only a round dozen of years, after rapping out
+its messages, as the spirits of this very year last past (supernaturally deficient in originality)
+rapped out theirs. Mere messages in the earthly order of events had lately come to the English Crown
+and People, from a congress of British subjects in America: which, strange to relate, have proved
+more important to the human race than any communications yet received through any of the chickens of
+the Cock-lane brood.
+
+France, less favoured on the whole as to matters spiritual than her sister of the shield and
+trident, rolled with exceeding smoothness down hill, making paper money and spending it. Under the
+guidance of her Christian pastors, she entertained herself, besides, with such humane achievements
+as sentencing a youth to have his hands cut off, his tongue torn out with pincers, and his body
+burned alive, because he had not kneeled down in the rain to do honour to a dirty procession of
+monks which passed within his view, at a distance of some fifty or sixty yards. It is likely enough
+that, rooted in the woods of France and Norway, there were growing trees, when that sufferer was put
+to death, already marked by the Woodman, Fate, to come down and be sawn into boards, to make a
+certain movable framework with a sack and a knife in it, terrible in history. It is likely enough
+that in the rough outhouses of some tillers of the heavy lands adjacent to Paris, there were
+sheltered from the weather that very day, rude carts, bespattered with rustic mire, snuffed about by
+pigs, and roosted in by poultry, which the Farmer, Death, had already set apart to be his tumbrils
+of the Revolution. But that Woodman and that Farmer, though they work unceasingly, work silently and
+no one heard them as they went about with muffled tread: the rather, forasmuch as to entertain any
+suspicion that they were awake, was to be atheistical and traitorous. 
+
+</textarea>
+<br><br>
+<button onClick="doUpdate()">Update</button>
+<button onClick="eraseText()">Clear</button>
+</body>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='description' content='Partially machine generated SVG using a Ruby script.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='2014-08-29 14:19:09 -0500' />
+<meta name='script' content='svg-squares6.rb' />
+<meta name='SVGTools version' content='0.53' />
+
+<script>
+maxId = 143;
+a = [
+200,200,229,200,258,200,287,200,316,200,345,200,
+374,200,403,200,432,200,461,200,490,200,519,200,
+200,229,229,229,258,229,287,229,316,229,345,229,
+374,229,403,229,432,229,461,229,490,229,519,229,
+200,258,229,258,258,258,287,258,316,258,345,258,
+374,258,403,258,432,258,461,258,490,258,519,258,
+200,287,229,287,258,287,287,287,316,287,345,287,
+374,287,403,287,432,287,461,287,490,287,519,287,
+200,316,229,316,258,316,287,316,316,316,345,316,
+374,316,403,316,432,316,461,316,490,316,519,316,
+200,345,229,345,258,345,287,345,316,345,345,345,
+374,345,403,345,432,345,461,345,490,345,519,345,
+200,374,229,374,258,374,287,374,316,374,345,374,
+374,374,403,374,432,374,461,374,490,374,519,374,
+200,403,229,403,258,403,287,403,316,403,345,403,
+374,403,403,403,432,403,461,403,490,403,519,403,
+200,432,229,432,258,432,287,432,316,432,345,432,
+374,432,403,432,432,432,461,432,490,432,519,432,
+200,461,229,461,258,461,287,461,316,461,345,461,
+374,461,403,461,432,461,461,461,490,461,519,461,
+200,490,229,490,258,490,287,490,316,490,345,490,
+374,490,403,490,432,490,461,490,490,490,519,490,
+200,519,229,519,258,519,287,519,316,519,345,519,
+374,519,403,519,432,519,461,519,490,519,519,519
+];
+
+function scramble()
+{
+  for (i=0; i<=maxId; i++)                    
+  {
+    sq = document.getElementById(i);
+    x = Math.round(Math.random()*725)
+    y = Math.round(Math.random()*625);
+    sq.setAttribute('x',x);
+    sq.setAttribute('y',y);
+    document.getElementById("btnRestore").disabled=false ;
+  }
+}
+
+function stop()
+{
+  document.getElementById("btnStop").disabled=true ;
+  document.getElementById("btnRestore").disabled=false ;
+  window.clearInterval(intv);    
+}
+
+function restore()
+{
+  document.getElementById("btnRestore").disabled=true ;
+  document.getElementById("btnStop").disabled=false ;
+  intv = window.setInterval("moveSquares()",16);
+}        
+
+function moveSquares()
+{
+  j = 0;
+  x = 0;
+  y = 0;
+  moved = false; 
+  for (i=0; i<=maxId; i++)
+  {
+    sq = document.getElementById(i);
+    x = parseInt(sq.getAttribute('x'));
+    y = parseInt(sq.getAttribute('y'));
+
+    if (x < a[j])
+    {
+      x += 1 ;
+      moved = true;
+    }
+    else if (x > a[j])
+    {
+      x -= 1  ;
+      moved = true;
+    }
+
+    if (y < a[j+1])
+    {
+      y += 1   ;
+      moved = true;
+    }
+    else if (y > a[j+1])
+    {
+      y -= 1  ;
+      moved = true;
+    }
+
+    sq.setAttribute('x',x);
+    sq.setAttribute('y',y);
+    j += 2;
+  }
+  if (!moved)
+  {
+    stop() ;
+    document.getElementById("btnRestore").disabled=true ;
+    //alert("Done!");
+  }         
+}
+</script> 
+
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='750' height='650'>
+<g stroke='black'>
+<rect x='200' y='200' width='25' height='25' fill='rgb(255,0,0)' id='0'/>
+<rect x='229' y='200' width='25' height='25' fill='rgb(254,0,1)' id='1'/>
+<rect x='258' y='200' width='25' height='25' fill='rgb(253,0,2)' id='2'/>
+<rect x='287' y='200' width='25' height='25' fill='rgb(252,0,3)' id='3'/>
+<rect x='316' y='200' width='25' height='25' fill='rgb(251,0,4)' id='4'/>
+<rect x='345' y='200' width='25' height='25' fill='rgb(250,0,5)' id='5'/>
+<rect x='374' y='200' width='25' height='25' fill='rgb(249,0,6)' id='6'/>
+<rect x='403' y='200' width='25' height='25' fill='rgb(248,0,7)' id='7'/>
+<rect x='432' y='200' width='25' height='25' fill='rgb(247,0,8)' id='8'/>
+<rect x='461' y='200' width='25' height='25' fill='rgb(246,0,9)' id='9'/>
+<rect x='490' y='200' width='25' height='25' fill='rgb(245,0,10)' id='10'/>
+<rect x='519' y='200' width='25' height='25' fill='rgb(244,0,11)' id='11'/>
+<rect x='200' y='229' width='25' height='25' fill='rgb(243,0,12)' id='12'/>
+<rect x='229' y='229' width='25' height='25' fill='rgb(242,0,13)' id='13'/>
+<rect x='258' y='229' width='25' height='25' fill='rgb(241,0,14)' id='14'/>
+<rect x='287' y='229' width='25' height='25' fill='rgb(240,0,15)' id='15'/>
+<rect x='316' y='229' width='25' height='25' fill='rgb(239,0,16)' id='16'/>
+<rect x='345' y='229' width='25' height='25' fill='rgb(238,0,17)' id='17'/>
+<rect x='374' y='229' width='25' height='25' fill='rgb(237,0,18)' id='18'/>
+<rect x='403' y='229' width='25' height='25' fill='rgb(236,0,19)' id='19'/>
+<rect x='432' y='229' width='25' height='25' fill='rgb(235,0,20)' id='20'/>
+<rect x='461' y='229' width='25' height='25' fill='rgb(234,0,21)' id='21'/>
+<rect x='490' y='229' width='25' height='25' fill='rgb(233,0,22)' id='22'/>
+<rect x='519' y='229' width='25' height='25' fill='rgb(232,0,23)' id='23'/>
+<rect x='200' y='258' width='25' height='25' fill='rgb(231,0,24)' id='24'/>
+<rect x='229' y='258' width='25' height='25' fill='rgb(230,0,25)' id='25'/>
+<rect x='258' y='258' width='25' height='25' fill='rgb(229,0,26)' id='26'/>
+<rect x='287' y='258' width='25' height='25' fill='rgb(228,0,27)' id='27'/>
+<rect x='316' y='258' width='25' height='25' fill='rgb(227,0,28)' id='28'/>
+<rect x='345' y='258' width='25' height='25' fill='rgb(226,0,29)' id='29'/>
+<rect x='374' y='258' width='25' height='25' fill='rgb(225,0,30)' id='30'/>
+<rect x='403' y='258' width='25' height='25' fill='rgb(224,0,31)' id='31'/>
+<rect x='432' y='258' width='25' height='25' fill='rgb(223,0,32)' id='32'/>
+<rect x='461' y='258' width='25' height='25' fill='rgb(222,0,33)' id='33'/>
+<rect x='490' y='258' width='25' height='25' fill='rgb(221,0,34)' id='34'/>
+<rect x='519' y='258' width='25' height='25' fill='rgb(220,0,35)' id='35'/>
+<rect x='200' y='287' width='25' height='25' fill='rgb(219,0,36)' id='36'/>
+<rect x='229' y='287' width='25' height='25' fill='rgb(218,0,37)' id='37'/>
+<rect x='258' y='287' width='25' height='25' fill='rgb(217,0,38)' id='38'/>
+<rect x='287' y='287' width='25' height='25' fill='rgb(216,0,39)' id='39'/>
+<rect x='316' y='287' width='25' height='25' fill='rgb(215,0,40)' id='40'/>
+<rect x='345' y='287' width='25' height='25' fill='rgb(214,0,41)' id='41'/>
+<rect x='374' y='287' width='25' height='25' fill='rgb(213,0,42)' id='42'/>
+<rect x='403' y='287' width='25' height='25' fill='rgb(212,0,43)' id='43'/>
+<rect x='432' y='287' width='25' height='25' fill='rgb(211,0,44)' id='44'/>
+<rect x='461' y='287' width='25' height='25' fill='rgb(210,0,45)' id='45'/>
+<rect x='490' y='287' width='25' height='25' fill='rgb(209,0,46)' id='46'/>
+<rect x='519' y='287' width='25' height='25' fill='rgb(208,0,47)' id='47'/>
+<rect x='200' y='316' width='25' height='25' fill='rgb(207,0,48)' id='48'/>
+<rect x='229' y='316' width='25' height='25' fill='rgb(206,0,49)' id='49'/>
+<rect x='258' y='316' width='25' height='25' fill='rgb(205,0,50)' id='50'/>
+<rect x='287' y='316' width='25' height='25' fill='rgb(204,0,51)' id='51'/>
+<rect x='316' y='316' width='25' height='25' fill='rgb(203,0,52)' id='52'/>
+<rect x='345' y='316' width='25' height='25' fill='rgb(202,0,53)' id='53'/>
+<rect x='374' y='316' width='25' height='25' fill='rgb(201,0,54)' id='54'/>
+<rect x='403' y='316' width='25' height='25' fill='rgb(200,0,55)' id='55'/>
+<rect x='432' y='316' width='25' height='25' fill='rgb(199,0,56)' id='56'/>
+<rect x='461' y='316' width='25' height='25' fill='rgb(198,0,57)' id='57'/>
+<rect x='490' y='316' width='25' height='25' fill='rgb(197,0,58)' id='58'/>
+<rect x='519' y='316' width='25' height='25' fill='rgb(196,0,59)' id='59'/>
+<rect x='200' y='345' width='25' height='25' fill='rgb(195,0,60)' id='60'/>
+<rect x='229' y='345' width='25' height='25' fill='rgb(194,0,61)' id='61'/>
+<rect x='258' y='345' width='25' height='25' fill='rgb(193,0,62)' id='62'/>
+<rect x='287' y='345' width='25' height='25' fill='rgb(192,0,63)' id='63'/>
+<rect x='316' y='345' width='25' height='25' fill='rgb(191,0,64)' id='64'/>
+<rect x='345' y='345' width='25' height='25' fill='rgb(190,0,65)' id='65'/>
+<rect x='374' y='345' width='25' height='25' fill='rgb(189,0,66)' id='66'/>
+<rect x='403' y='345' width='25' height='25' fill='rgb(188,0,67)' id='67'/>
+<rect x='432' y='345' width='25' height='25' fill='rgb(187,0,68)' id='68'/>
+<rect x='461' y='345' width='25' height='25' fill='rgb(186,0,69)' id='69'/>
+<rect x='490' y='345' width='25' height='25' fill='rgb(185,0,70)' id='70'/>
+<rect x='519' y='345' width='25' height='25' fill='rgb(184,0,71)' id='71'/>
+<rect x='200' y='374' width='25' height='25' fill='rgb(183,0,72)' id='72'/>
+<rect x='229' y='374' width='25' height='25' fill='rgb(182,0,73)' id='73'/>
+<rect x='258' y='374' width='25' height='25' fill='rgb(181,0,74)' id='74'/>
+<rect x='287' y='374' width='25' height='25' fill='rgb(180,0,75)' id='75'/>
+<rect x='316' y='374' width='25' height='25' fill='rgb(179,0,76)' id='76'/>
+<rect x='345' y='374' width='25' height='25' fill='rgb(178,0,77)' id='77'/>
+<rect x='374' y='374' width='25' height='25' fill='rgb(177,0,78)' id='78'/>
+<rect x='403' y='374' width='25' height='25' fill='rgb(176,0,79)' id='79'/>
+<rect x='432' y='374' width='25' height='25' fill='rgb(175,0,80)' id='80'/>
+<rect x='461' y='374' width='25' height='25' fill='rgb(174,0,81)' id='81'/>
+<rect x='490' y='374' width='25' height='25' fill='rgb(173,0,82)' id='82'/>
+<rect x='519' y='374' width='25' height='25' fill='rgb(172,0,83)' id='83'/>
+<rect x='200' y='403' width='25' height='25' fill='rgb(171,0,84)' id='84'/>
+<rect x='229' y='403' width='25' height='25' fill='rgb(170,0,85)' id='85'/>
+<rect x='258' y='403' width='25' height='25' fill='rgb(169,0,86)' id='86'/>
+<rect x='287' y='403' width='25' height='25' fill='rgb(168,0,87)' id='87'/>
+<rect x='316' y='403' width='25' height='25' fill='rgb(167,0,88)' id='88'/>
+<rect x='345' y='403' width='25' height='25' fill='rgb(166,0,89)' id='89'/>
+<rect x='374' y='403' width='25' height='25' fill='rgb(165,0,90)' id='90'/>
+<rect x='403' y='403' width='25' height='25' fill='rgb(164,0,91)' id='91'/>
+<rect x='432' y='403' width='25' height='25' fill='rgb(163,0,92)' id='92'/>
+<rect x='461' y='403' width='25' height='25' fill='rgb(162,0,93)' id='93'/>
+<rect x='490' y='403' width='25' height='25' fill='rgb(161,0,94)' id='94'/>
+<rect x='519' y='403' width='25' height='25' fill='rgb(160,0,95)' id='95'/>
+<rect x='200' y='432' width='25' height='25' fill='rgb(159,0,96)' id='96'/>
+<rect x='229' y='432' width='25' height='25' fill='rgb(158,0,97)' id='97'/>
+<rect x='258' y='432' width='25' height='25' fill='rgb(157,0,98)' id='98'/>
+<rect x='287' y='432' width='25' height='25' fill='rgb(156,0,99)' id='99'/>
+<rect x='316' y='432' width='25' height='25' fill='rgb(155,0,100)' id='100'/>
+<rect x='345' y='432' width='25' height='25' fill='rgb(154,0,101)' id='101'/>
+<rect x='374' y='432' width='25' height='25' fill='rgb(153,0,102)' id='102'/>
+<rect x='403' y='432' width='25' height='25' fill='rgb(152,0,103)' id='103'/>
+<rect x='432' y='432' width='25' height='25' fill='rgb(151,0,104)' id='104'/>
+<rect x='461' y='432' width='25' height='25' fill='rgb(150,0,105)' id='105'/>
+<rect x='490' y='432' width='25' height='25' fill='rgb(149,0,106)' id='106'/>
+<rect x='519' y='432' width='25' height='25' fill='rgb(148,0,107)' id='107'/>
+<rect x='200' y='461' width='25' height='25' fill='rgb(147,0,108)' id='108'/>
+<rect x='229' y='461' width='25' height='25' fill='rgb(146,0,109)' id='109'/>
+<rect x='258' y='461' width='25' height='25' fill='rgb(145,0,110)' id='110'/>
+<rect x='287' y='461' width='25' height='25' fill='rgb(144,0,111)' id='111'/>
+<rect x='316' y='461' width='25' height='25' fill='rgb(143,0,112)' id='112'/>
+<rect x='345' y='461' width='25' height='25' fill='rgb(142,0,113)' id='113'/>
+<rect x='374' y='461' width='25' height='25' fill='rgb(141,0,114)' id='114'/>
+<rect x='403' y='461' width='25' height='25' fill='rgb(140,0,115)' id='115'/>
+<rect x='432' y='461' width='25' height='25' fill='rgb(139,0,116)' id='116'/>
+<rect x='461' y='461' width='25' height='25' fill='rgb(138,0,117)' id='117'/>
+<rect x='490' y='461' width='25' height='25' fill='rgb(137,0,118)' id='118'/>
+<rect x='519' y='461' width='25' height='25' fill='rgb(136,0,119)' id='119'/>
+<rect x='200' y='490' width='25' height='25' fill='rgb(135,0,120)' id='120'/>
+<rect x='229' y='490' width='25' height='25' fill='rgb(134,0,121)' id='121'/>
+<rect x='258' y='490' width='25' height='25' fill='rgb(133,0,122)' id='122'/>
+<rect x='287' y='490' width='25' height='25' fill='rgb(132,0,123)' id='123'/>
+<rect x='316' y='490' width='25' height='25' fill='rgb(131,0,124)' id='124'/>
+<rect x='345' y='490' width='25' height='25' fill='rgb(130,0,125)' id='125'/>
+<rect x='374' y='490' width='25' height='25' fill='rgb(129,0,126)' id='126'/>
+<rect x='403' y='490' width='25' height='25' fill='rgb(128,0,127)' id='127'/>
+<rect x='432' y='490' width='25' height='25' fill='rgb(127,0,128)' id='128'/>
+<rect x='461' y='490' width='25' height='25' fill='rgb(126,0,129)' id='129'/>
+<rect x='490' y='490' width='25' height='25' fill='rgb(125,0,130)' id='130'/>
+<rect x='519' y='490' width='25' height='25' fill='rgb(124,0,131)' id='131'/>
+<rect x='200' y='519' width='25' height='25' fill='rgb(123,0,132)' id='132'/>
+<rect x='229' y='519' width='25' height='25' fill='rgb(122,0,133)' id='133'/>
+<rect x='258' y='519' width='25' height='25' fill='rgb(121,0,134)' id='134'/>
+<rect x='287' y='519' width='25' height='25' fill='rgb(120,0,135)' id='135'/>
+<rect x='316' y='519' width='25' height='25' fill='rgb(119,0,136)' id='136'/>
+<rect x='345' y='519' width='25' height='25' fill='rgb(118,0,137)' id='137'/>
+<rect x='374' y='519' width='25' height='25' fill='rgb(117,0,138)' id='138'/>
+<rect x='403' y='519' width='25' height='25' fill='rgb(116,0,139)' id='139'/>
+<rect x='432' y='519' width='25' height='25' fill='rgb(115,0,140)' id='140'/>
+<rect x='461' y='519' width='25' height='25' fill='rgb(114,0,141)' id='141'/>
+<rect x='490' y='519' width='25' height='25' fill='rgb(113,0,142)' id='142'/>
+<rect x='519' y='519' width='25' height='25' fill='rgb(112,0,143)' id='143'/>
+
+</g>
+</svg>
+
+<br><br>
+<button id="btnScramble" onClick="scramble()">Scramble</button>
+<!--<button id="btnStep" onClick="moveSquares()">Step</button> -->
+<button id="btnRestore" onClick="restore()">Restore</button>
+<button id="btnStop" onClick="stop()" disabled="true">Pause</button>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+  "http://www.w3.org\TR\2001\REC-SVG-20010904\DTD\svg10.dtd">  
+
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000' onload='init()'>                                                                    
+       
+<script type="text/ecmascript">
+<![CDATA[
+          
+function mouseOver(evt)
+{
+  evt.preventDefault();
+  c = document.getElementById("c1");
+  c.setAttribute("fill","#cac") ;
+}
+
+function mouseOut(evt)
+{
+  evt.preventDefault();
+  c = document.getElementById("c1");
+  c.setAttribute("fill","lightblue") ;
+}
+
+function mouseDown(evt)
+{
+  evt.preventDefault();
+  f = document.getElementById("c1") ;
+  f.addEventListener("mousemove", drag, false);
+}
+
+function mouseUp(evt)
+{
+  evt.preventDefault();
+  f = document.getElementById("c1") ;
+  f.removeEventListener("mousemove",drag);
+}
+
+
+function drag(evt)
+{
+  c = document.getElementById("c1");
+  c.setAttribute("cx",evt.clientX) ;
+  c.setAttribute("cy",evt.clientY) ;
+  
+}
+
+function init()
+{
+  f = document.getElementById("c1") ;
+  f.addEventListener("mouseover", mouseOver, false);
+  f.addEventListener("mouseout", mouseOut, false);
+  f.addEventListener("mousedown", mouseDown, false);
+  f.addEventListener("mouseup", mouseUp, false);
+}
+
+
+]]>
+</script> 
+  <defs>
+    <clipPath id="clip1">
+      <path d="M50,50 h800 v600 h-800z"
+            clip-rule="evenodd" />
+    </clipPath>   
+  </defs>
+  <rect id="r1" x="50" y="50" width="800" height="600" fill="#eeeeee" stroke="black"/>
+  <g clip-path="URL(#clip1)">
+    <circle id="c1" cx="200" cy="200" r="50" fill="lightblue" />
+  </g>
+  <text x="50" y="700" font-size="24">Click on the circle and drag it around!</text>
+</svg>
+

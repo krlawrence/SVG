@@ -1,0 +1,26 @@
+<?xml version="1.0" standalone="yes"?>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='500' height='500'>
+
+<g id="b10"> 
+  <g fill="none" stroke="blue" > 
+    <path d="M 251,439 L 60,147 M 315,149 L 108,439" />"
+  </g>
+ 
+  <g fill="none" stroke="black" stroke-width="3"> 
+    <path d="M 251,439 C 60,147 315,149 108,439" />"
+  </g>
+ 
+  <g fill="red"  > 
+    <circle r="3" cx="251" cy="439"  />
+    <circle r="3" cx="60" cy="147"  />
+    <circle r="3" cx="315" cy="149"  />
+    <circle r="3" cx="108" cy="439"  />
+  </g>
+
+  <text x="236" y="439">0</text>
+  <text x="45" y="147">1</text>
+  <text x="300" y="149">2</text>
+  <text x="93" y="439">3</text>
+  <text x="20" y="469"> d="M 251,439 C 60,147 315,149 108,439" </text>
+</g> 
+</svg>

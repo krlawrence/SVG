@@ -1,0 +1,24 @@
+<html>
+<head>
+<meta name='description' content='Using clips in SVG.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='2012-06-12 08:11:25 -0500' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'>
+
+  <defs>
+    <clipPath id="myclip">
+      <circle cx='350' cy='350' r='175' />
+    </clipPath>
+  </defs>
+
+  <image x="40" y="100" width="670" height="506" xlink:href="Clouds.png" clip-path="URL(#myclip)"/>
+
+<!--  <use xlink:href="#oval" fill="none" stroke-width="10" stroke="#CE8A77"/> -->
+ 
+
+</svg>
+</body>
+</html>
+

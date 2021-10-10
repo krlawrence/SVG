@@ -1,0 +1,52 @@
+<html>
+<head>
+<meta name='description' content='Machine generated SVG using a Ruby script.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Sat Jun 09 19:35:12 -0500 2012' />
+</head>
+
+<body>
+<svg id="s1"xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='450' onload='init(evt)'>
+<script type="text/ecmascript">
+<![CDATA[
+
+//SVGDocument = null;
+//SVGRoot = null;
+
+function init(evt)
+{
+  //SVGDocument = evt.target.ownerDocument;
+  //SVGDocument = evt.target.contentDocument;
+  //SVGRoot = SVGDocument.documentElement;
+  //alert(SVGDocument);
+};
+
+function doStop()
+{
+  e = document.getElementById("anim1")
+  e.endElement();
+  //SVGDocument.pauseAnimations();
+};
+
+function doSpin()
+{
+  e = document.getElementById("anim1");
+  e.beginElement();
+};
+]]>
+</script>          
+ <g id="g1" transform="translate(300,300)" >
+    <path id="p1" d="m-100,-50,200,50,-200,50,50,-50 z"
+      fill="lightblue" stroke="#999" stroke-width="10" stroke-linejoin="miter"
+      stroke-miterlimit="6">
+      <animateTransform id="anim1" attributeName="transform" attributeType="XML"
+                        type="rotate" from="0" to="360" begin="0s" dur="5s"
+                        repeatCount="indefinite" />
+    </path>
+  </g>
+</svg>
+<p>
+<button onClick="doStop()">Stop</button>
+<button onClick="doSpin()">Spin</button>
+</body>
+</html>

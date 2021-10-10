@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Blur filter</title>
+<meta name='description' content='Blur filters' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Mon May 6 11:18:00 CDT 2013' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'>
+
+<defs>
+  <filter color-interpolation-filters="sRGB" id="f1">
+    <feGaussianBlur stdDeviation="3" />
+  </filter>
+
+</defs>
+
+<rect x="50"  y="85" width="200" height="200" ry="7" fill="#a05a2c" stroke="#bc8f8f" />
+<rect x="300" y="85" width="200" height="200" ry="7" fill="#a05a2c" stroke="#bc8f8f" filter="url(#f1)" />
+<g fill="black">
+  <text x="50" y="300">Before</text>
+  <text x="300" y="300">After blur filter</text>
+</g>
+</svg>
+</body>
+</html>             

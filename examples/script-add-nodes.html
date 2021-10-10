@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dynamically adding nodes</title>
+<meta name='description' content='Uses script to add nodes to an SVG document.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Tue Apr 16 07:58:11 CDT 2013' />
+
+<script> 
+var svgNS = "http://www.w3.org/2000/svg";  
+cx = 125 ;
+cy = 50 ;
+r = 25 ;
+w = 800 ;
+nextId = 1 ;
+
+function addCircle()
+{
+  c = document.createElementNS(svgNS,"circle");
+  c.setAttribute("id","c"+nextId);
+  c.setAttribute("cx",cx);
+  c.setAttribute("cy",cy);
+  c.setAttribute("r",r);
+
+  red = Math.floor(Math.random()*255); 
+  grn = Math.floor(Math.random()*255); 
+  blu = Math.floor(Math.random()*255); 
+  clr = "rgb("+red+","+grn+","+blu+")" ;
+  c.setAttribute("fill",clr);
+  cx += r*3
+
+  if (w - cx <= r)
+  {
+    cx = 50;
+    cy += r*3 ;
+  }
+  document.getElementById("svg-node").appendChild(c);
+  nextId += 1 ;
+}                 
+</script>                             
+</head>
+
+<body>
+<svg id="svg-node" xmlns='http://www.w3.org/2000/svg' version='1.1' width='820' height='620'>
+  <rect id="r1" x="0" y="0" width="800" height="600" fill="#eeeeee" stroke="black"/>
+  <circle id="c0" cx="50" cy="50" r="25" fill="blue" />
+</svg>       
+
+<br><br>
+<button onClick="addCircle()">Add a circle</button>  
+</body>
+</html>
+

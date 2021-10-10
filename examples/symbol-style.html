@@ -1,0 +1,37 @@
+<html>
+<head>
+<meta name='description' content='Shows how styles can be applied to symbols' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Sat Jun 09 20:02:01 -0500 2012' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'>
+ <defs>
+    <symbol id="symbol1">
+      <circle cx="50" cy="50" r="20" />
+    </symbol>
+
+    <style> <![CDATA[
+       .style1 { fill:orange  ; stroke:maroon    ; stroke-width:5 }
+       .style2 { fill:brown   ; stroke:darkorange     ; stroke-width:5 }
+       .style3 { fill:moccasin; stroke:orchid    ; stroke-width:5 } ]]>
+    </style>
+  </defs>
+
+  <g style="text-rendering:optimizeLegibility;shape-rendering:auto">
+    <text x="5" y="20" style="font-size:24">SVG Demo: Applying styles to symbols</text>
+  </g>
+
+  <use xlink:href="#symbol1" class="style1" transform="translate( 50, 50)"/>
+  <use xlink:href="#symbol1" class="style2" transform="translate(100, 50)"/>
+  <use xlink:href="#symbol1" class="style1" transform="translate(150, 50)"/>
+  <use xlink:href="#symbol1" class="style2" transform="translate( 50,100)"/>
+  <use xlink:href="#symbol1" class="style3" transform="translate(100,100)"/>
+  <use xlink:href="#symbol1" class="style2" transform="translate(150,100)"/>
+  <use xlink:href="#symbol1" class="style1" transform="translate( 50,150)"/>
+  <use xlink:href="#symbol1" class="style2" transform="translate(100,150)"/>
+  <use xlink:href="#symbol1" class="style1" transform="translate(150,150)"/>
+
+
+</body>
+</html>

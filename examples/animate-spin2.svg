@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+  "http://www.w3.org\TR\2001\REC-SVG-20010904\DTD\svg10.dtd">  
+
+<svg id="s1" xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='450' >
+
+<script type="text/ecmascript">
+<![CDATA[
+
+function doStop()
+{
+  document.documentElement.pauseAnimations();
+};
+
+function doSpin()
+{
+  document.documentElement.unpauseAnimations();
+};
+
+
+]]>
+</script>          
+ <g id="g1" transform="translate(300,300)" >
+    <path id="p1" d="m-100,-50,200,50,-200,50,50,-50 z"
+      fill="lightblue" stroke="#999" stroke-width="10" stroke-linejoin="miter"
+      stroke-miterlimit="6">
+      <animateTransform id="anim1" attributeName="transform" attributeType="XML"
+                        type="rotate" from="0" to="360" begin="0s" dur="5s"
+                        repeatCount="indefinite" />
+    </path>
+    
+  </g>
+  <circle cx="50" cy="400" r="25" onclick="doStop()" fill="red"/> 
+  <circle cx="125" cy="400" r="25" onclick="doSpin()" fill="green"/> 
+</svg>

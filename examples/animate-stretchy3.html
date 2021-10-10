@@ -1,0 +1,40 @@
+<html>
+<head>
+<meta name='description' content='Using SVG transforms to create a nice animation' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='2012-06-18 14:56:21 -0500' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'>
+  <g id="g1" transform='translate(300,300)'>
+      <ellipse rx="100" ry="20" fill="blue" >
+                         <animateTransform attributeName="transform" 
+                          attributeType="XML" type="rotate"
+      	                  dur="7s" values="0;360"
+      		          repeatCount="indefinite" />      
+        <animate attributeName="ry" 
+                          attributeType="XML" 
+      	                  dur="2s" values="10;20;50;100;50;20;10"
+      		          repeatCount="indefinite" />      
+        
+        <animate attributeName="rx" 
+                          attributeType="XML" 
+      	                  dur="2s" values="200;150;200;250;200"
+      		          repeatCount="indefinite" />      
+
+        <animate attributeName="fill" 
+                          attributeType="XML" 
+      	                  dur="11s" values="blue;yellow;red;green;yellow;blue"
+      		          repeatCount="indefinite" />      
+                                                             
+             
+      </ellipse>
+    </g>
+    <use xlink:href="#g1" transform="rotate(45 300 300)" />
+    <use xlink:href="#g1" transform="rotate(90 300 300)" />
+    <use xlink:href="#g1" transform="rotate(135 300 300)" />
+
+  </g>
+</svg>
+</body>
+</html>

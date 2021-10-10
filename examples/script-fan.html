@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Tests</title>
+<meta name='description' content='Uses script to animate some lines in a (semi circular) fan shape.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Tue Apr 23 20:25:28 CDT 2013' />
+
+<script> 
+TOTAL_LINES = 61 ;
+p1 = 0  ;
+p2 = 60;
+colr = "white" ;
+moveIn = true;
+lines = new Array() ;
+
+function init()
+{
+  for (i=0; i< TOTAL_LINES; i++)
+  {
+    lines[i] = document.getElementById("ln"+i) ;
+  }
+}                            
+
+function start()
+{
+  document.getElementById("btnStart").disabled=true ;
+  document.getElementById("btnStop").disabled=false ;
+  intv = window.setInterval("move()",50);
+}
+
+function stop()
+{
+  document.getElementById("btnStart").disabled=false ;
+  document.getElementById("btnStop").disabled=true;
+  window.clearInterval(intv);
+}
+
+function move()
+{
+  lines[p1].setAttribute("stroke",colr) ;
+  lines[p2].setAttribute("stroke",colr) ;
+
+  if ( moveIn )
+  {
+    p1 += 1 ;
+    p2 -= 1 ;
+  }
+  else
+  {
+    p1 -= 1 ;
+    p2 += 1 ;
+  }
+  if ( p1 > TOTAL_LINES/2 )
+  {
+    moveIn = false ; 
+    //colr = "blue" ; 
+    red = Math.floor((Math.random()*255)) ;
+    blu = Math.floor((Math.random()*255)) ;
+    grn = Math.floor((Math.random()*255)) ;
+    colr = "rgb("+red+","+grn+","+blu+")" ;
+    p1 = 30 ;
+    p2 = 30 ;
+  }
+  if ( p1 < 0 )
+  {
+    moveIn = true ;
+    colr = "white" ;
+    p1 = 0 ;
+  }
+  if (p2 >= TOTAL_LINES)
+  {
+    p2 = TOTAL_LINES -1;
+  }
+}
+
+</script>                        
+</head>
+<body onload="init()">
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='900' height='500'>
+<g stroke='blue' fill-opacity='1.0' fill='none'>
+<line id="ln0"  x1='400' y1='400' x2='150' y2='400'  fill='none' stroke='blue'/>
+<line id="ln1"  x1='400' y1='400' x2='150' y2='387'  fill='none' stroke='blue'/>
+<line id="ln2"  x1='400' y1='400' x2='151' y2='374'  fill='none' stroke='blue'/>
+<line id="ln3"  x1='400' y1='400' x2='153' y2='361'  fill='none' stroke='blue'/>
+<line id="ln4"  x1='400' y1='400' x2='155' y2='348'  fill='none' stroke='blue'/>
+<line id="ln5"  x1='400' y1='400' x2='159' y2='335'  fill='none' stroke='blue'/>
+<line id="ln6"  x1='400' y1='400' x2='162' y2='323'  fill='none' stroke='blue'/>
+<line id="ln7"  x1='400' y1='400' x2='167' y2='310'  fill='none' stroke='blue'/>
+<line id="ln8"  x1='400' y1='400' x2='172' y2='298'  fill='none' stroke='blue'/>
+<line id="ln9"  x1='400' y1='400' x2='177' y2='287'  fill='none' stroke='blue'/>
+<line id="ln10" x1='400' y1='400' x2='183' y2='275'  fill='none' stroke='blue'/>
+<line id="ln11" x1='400' y1='400' x2='190' y2='264'  fill='none' stroke='blue'/>
+<line id="ln12" x1='400' y1='400' x2='198' y2='253'  fill='none' stroke='blue'/>
+<line id="ln13" x1='400' y1='400' x2='206' y2='243'  fill='none' stroke='blue'/>
+<line id="ln14" x1='400' y1='400' x2='214' y2='233'  fill='none' stroke='blue'/>
+<line id="ln15" x1='400' y1='400' x2='223' y2='223'  fill='none' stroke='blue'/>
+<line id="ln16" x1='400' y1='400' x2='233' y2='214'  fill='none' stroke='blue'/>
+<line id="ln17" x1='400' y1='400' x2='243' y2='206'  fill='none' stroke='blue'/>
+<line id="ln18" x1='400' y1='400' x2='253' y2='198'  fill='none' stroke='blue'/>
+<line id="ln19" x1='400' y1='400' x2='264' y2='190'  fill='none' stroke='blue'/>
+<line id="ln20" x1='400' y1='400' x2='275' y2='183'  fill='none' stroke='blue'/>
+<line id="ln21" x1='400' y1='400' x2='287' y2='177'  fill='none' stroke='blue'/>
+<line id="ln22" x1='400' y1='400' x2='298' y2='172'  fill='none' stroke='blue'/>
+<line id="ln23" x1='400' y1='400' x2='310' y2='167'  fill='none' stroke='blue'/>
+<line id="ln24" x1='400' y1='400' x2='323' y2='162'  fill='none' stroke='blue'/>
+<line id="ln25" x1='400' y1='400' x2='335' y2='159'  fill='none' stroke='blue'/>
+<line id="ln26" x1='400' y1='400' x2='348' y2='155'  fill='none' stroke='blue'/>
+<line id="ln27" x1='400' y1='400' x2='361' y2='153'  fill='none' stroke='blue'/>
+<line id="ln28" x1='400' y1='400' x2='374' y2='151'  fill='none' stroke='blue'/>
+<line id="ln29" x1='400' y1='400' x2='387' y2='150'  fill='none' stroke='blue'/>
+<line id="ln30" x1='400' y1='400' x2='400' y2='150'  fill='none' stroke='blue'/>
+<line id="ln31" x1='400' y1='400' x2='413' y2='150'  fill='none' stroke='blue'/>
+<line id="ln32" x1='400' y1='400' x2='426' y2='151'  fill='none' stroke='blue'/>
+<line id="ln33" x1='400' y1='400' x2='439' y2='153'  fill='none' stroke='blue'/>
+<line id="ln34" x1='400' y1='400' x2='452' y2='155'  fill='none' stroke='blue'/>
+<line id="ln35" x1='400' y1='400' x2='465' y2='159'  fill='none' stroke='blue'/>
+<line id="ln36" x1='400' y1='400' x2='477' y2='162'  fill='none' stroke='blue'/>
+<line id="ln37" x1='400' y1='400' x2='490' y2='167'  fill='none' stroke='blue'/>
+<line id="ln38" x1='400' y1='400' x2='502' y2='172'  fill='none' stroke='blue'/>
+<line id="ln39" x1='400' y1='400' x2='513' y2='177'  fill='none' stroke='blue'/>
+<line id="ln40" x1='400' y1='400' x2='525' y2='183'  fill='none' stroke='blue'/>
+<line id="ln41" x1='400' y1='400' x2='536' y2='190'  fill='none' stroke='blue'/>
+<line id="ln42" x1='400' y1='400' x2='547' y2='198'  fill='none' stroke='blue'/>
+<line id="ln43" x1='400' y1='400' x2='557' y2='206'  fill='none' stroke='blue'/>
+<line id="ln44" x1='400' y1='400' x2='567' y2='214'  fill='none' stroke='blue'/>
+<line id="ln45" x1='400' y1='400' x2='577' y2='223'  fill='none' stroke='blue'/>
+<line id="ln46" x1='400' y1='400' x2='586' y2='233'  fill='none' stroke='blue'/>
+<line id="ln47" x1='400' y1='400' x2='594' y2='243'  fill='none' stroke='blue'/>
+<line id="ln48" x1='400' y1='400' x2='602' y2='253'  fill='none' stroke='blue'/>
+<line id="ln49" x1='400' y1='400' x2='610' y2='264'  fill='none' stroke='blue'/>
+<line id="ln50" x1='400' y1='400' x2='617' y2='275'  fill='none' stroke='blue'/>
+<line id="ln51" x1='400' y1='400' x2='623' y2='287'  fill='none' stroke='blue'/>
+<line id="ln52" x1='400' y1='400' x2='628' y2='298'  fill='none' stroke='blue'/>
+<line id="ln53" x1='400' y1='400' x2='633' y2='310'  fill='none' stroke='blue'/>
+<line id="ln54" x1='400' y1='400' x2='638' y2='323'  fill='none' stroke='blue'/>
+<line id="ln55" x1='400' y1='400' x2='641' y2='335'  fill='none' stroke='blue'/>
+<line id="ln56" x1='400' y1='400' x2='645' y2='348'  fill='none' stroke='blue'/>
+<line id="ln57" x1='400' y1='400' x2='647' y2='361'  fill='none' stroke='blue'/>
+<line id="ln58" x1='400' y1='400' x2='649' y2='374'  fill='none' stroke='blue'/>
+<line id="ln59" x1='400' y1='400' x2='650' y2='387'  fill='none' stroke='blue'/>
+<line id="ln60" x1='400' y1='400' x2='650' y2='400'  fill='none' stroke='blue'/>
+</g>
+</svg>
+<br><br>
+<button onClick="start()" id="btnStart">Start</button>  
+<button onClick="stop()"id="btnStop" disabled="true">Stop</button> 
+</body>
+</html>

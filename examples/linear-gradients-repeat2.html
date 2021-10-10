@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Examples of linear gradients</title>
+<meta name='description' content='Examples of linear gradients.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Tue May 14 12:42:00 CDT 2013' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'>
+
+<defs>
+
+<!-- Diagonal gradient -->
+
+  <linearGradient id="g1" x1="0" y1="0" x2="30" y2="30" spreadMethod="repeat"
+                  gradientUnits="userSpaceOnUse">
+    <stop offset="0%"   stop-color="#333"   stop-opacity="0.9"/>
+    <stop offset="50%"   stop-color="white"  stop-opacity="0.9"/>
+    <stop offset="50%"   stop-color="cyan"  stop-opacity="0.9"/>
+  </linearGradient>
+</defs> 
+
+<text x="5" y="20" font-size="24">SVG Demo: Another linear gradients that repeats.</text>
+<rect x="100" y="100" width="500" height="500" fill="url(#g1)"/>
+</svg>
+</body>
+</html>
+

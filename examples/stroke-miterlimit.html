@@ -1,0 +1,20 @@
+<html>
+<head>
+<meta name='description' content='Miter-limit can be used to make sure the miter comes to a point.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='2012-06-11 16:15:43 -0500' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'>
+
+<g style="shape-rendering:auto; stroke:blue ; stroke-width:8 ; fill:none">
+  <g style="stroke-linejoin:miter">
+  <path style="stroke-miterlimit:3" d="m 50,50,25,100,25,-100,25,100,25,-100,25,100"/>
+  <path style="stroke-miterlimit:4" d="m 225,50,25,100,25,-100,25,100,25,-100,25,100"/>
+  <path style="stroke-miterlimit:5" d="m 400,50,25,100,25,-100,25,100,25,-100,25,100"/>
+  </g>
+</g>
+
+</svg>
+</body>
+</html>

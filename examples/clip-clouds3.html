@@ -1,0 +1,22 @@
+<html>
+<head>
+<meta name='description' content='Using clips in SVG.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='2012-06-12 08:11:25 -0500' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'>
+
+  <defs>
+    <clipPath id="myclip">
+      <path d='M 500,350A 150,150,0,0,1,498,376L 416,374L 480,425A 150,150,0,0,1,465,446L 395,404L 425,480A 150,150,0,0,1,401,491L 362,419L 350,500A 150,150,0,0,1,324,498L 326,416L 275,480A 150,150,0,0,1,254,465L 296,395L 220,425A 150,150,0,0,1,209,401L 281,362L 200,350A 150,150,0,0,1,202,324L 284,326L 220,275A 150,150,0,0,1,235,254L 305,296L 275,220A 150,150,0,0,1,299,209L 338,281L 350,200A 150,150,0,0,1,376,202L 374,284L 425,220A 150,150,0,0,1,446,235L 404,305L 480,275A 150,150,0,0,1,491,299L 419,338L 500,350 z' />
+    </clipPath>
+  </defs>
+
+  <image x="40" y="100" width="670" height="506" xlink:href="Clouds.png" clip-path="URL(#myclip)"/>
+
+</svg>
+</body>
+</html>
+
+

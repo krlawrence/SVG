@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Number randomizer</title>
+<meta name='description' content='Randomizes a given list of numbers.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Wed Sep 17 15:40:00 2014' />
+
+<script> 
+inp = null;
+out = null;
+spn = null;
+
+function init()
+{
+  inp = document.getElementById("inputs") ;
+  out = document.getElementById("outputs") ;
+  spn = document.getElementById("sp1") ;
+}     
+
+function reset()
+{
+  inp.value = "" ;
+  out.value = "" ;
+}
+
+function updateCount(n)
+{
+  s = "  [Number of values processed: " + n + "]" ;
+  spn.childNodes[0].nodeValue = s ;
+}
+
+function sort()
+{
+  vals = inp.value.split(",") ;
+  out.value = vals.sort(function(a, b){return a-b}).toString() ;
+  updateCount(vals.length);
+}
+
+function randomize()
+{
+  vals = inp.value.split(",") ;
+  list = new Array() ;
+
+  len = vals.length ;
+
+  for (i=0; i<len; i++)
+  {
+    list[i] = -1;
+  }
+  n = 0;
+  for(i=0; i< len; i++)
+  {
+    found = false;
+    while (!found)
+    {
+      n = Math.round(Math.random()*len-1);
+      if (list[n] == -1)
+      {
+        found = true
+      }
+    }
+    list[n] = vals[i] ;
+  }
+  out.value = list.toString() ;
+  updateCount(len);
+}
+
+</script>                             
+</head>
+
+<body onload="init()">
+<br><br>
+Enter numbers below (separated by commas) and then click Shuffle to randomize the numbers:<br>
+<textarea id="inputs" rows="5" cols="90"></textarea>
+<br><br>
+Results will appear below<span id="sp1">:</span><br>
+<textarea id="outputs" readOnly="true" rows="5" cols="90"></textarea>
+<br><br>
+<button onClick="randomize()" id="btnStart">Shuffle</button>  
+<button onClick="sort()" id="btnSort">Sort</button>  
+<button onClick="reset()">Clear</button>
+</body>
+</html>
+
+

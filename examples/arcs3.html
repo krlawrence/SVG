@@ -1,0 +1,35 @@
+<html>
+<head>
+<meta name='description' content='The four possible arcs, hence the arc flags fields.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Mon Jun 11 09:26:01 -0500 2012' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'>
+
+<defs>
+  <linearGradient id="g1" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="20%" stop-color="white"/>
+    <stop offset="100%" stop-color="blue"/>
+  </linearGradient>
+</defs>
+
+<g text-rendering="optimizeLegibility" shape-rendering="auto">
+  <text x="5" y="20" font-size="24">SVG Demo: The four possible arcs.</text>
+  <g stroke-width="4" fill="none">
+    <path stroke="black" d="M300,300 h-150"/>
+    <path stroke="blue" d="M 150,300 A100,100,0,1,1,300,300 "/>
+    <path stroke="red" d="M 150,300 A100,100,0,0,0,300,300 "/>
+    <path stroke="green" d="M 150,300 A100,100,0,1,0,300,300 "/>
+    <path stroke="yellow" d="M 150,300 A100,100,0,0,1,300,300 "/>
+  </g>
+  <rect x="80" y="480" width="290" height="100" fill="url(#g1)" stroke="#00a"/>
+  <text x="100" y="500" fill="blue">M 150,300 A100,100,0,1,1,300,300</text>
+  <text x="100" y="520" fill="red">M 150,300 A100,100,0,0,0,300,300</text>
+  <text x="100" y="540" fill="green">M 150,300 A100,100,0,1,0,300,3000</text>
+  <text x="100" y="560" fill="yellow">M 150,300 A100,100,0,0,1,300,300</text>
+</g>
+
+</svg>
+</body>
+</html>

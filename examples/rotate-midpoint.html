@@ -1,0 +1,25 @@
+<html>
+<head>
+<meta name='description' content='Using the new feture of rotate that lets an origin be specified.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='2012-06-19 10:39:01 -0500' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'>
+<desc>Using the new feture of rotate that lets an origin be specified.</desc>
+
+<circle fill="blue" cx="200" cy="150" r="5" />
+<g stroke="blue" fill="none">
+  <g stroke="#ccc">  
+    <rect x="100" y="100" width="200" height="100" />
+    <rect x="150" y="50" width="100" height="200" />
+  </g>  
+  <g transform="rotate(45 200 150)"> 
+    <rect x="100" y="100" width="200" height="100" />
+    <rect x="150" y="50" width="100" height="200" />
+    </g>
+</g>
+
+</svg>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SVG moving polyline</title>
+<meta name='description' content='Uses script to move a polyline around.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Wed Apr 17 07:30:00 2013' />
+
+<script> 
+TOTAL_LINES = 1;
+p = new Array() ;
+points = new Array() ;
+r = 2 ;
+h = 600 ;
+w = 800 ;
+dx = new Array() ;
+dy = new Array() ;
+intv = null ;
+
+
+// LATER: Once the HTML5 spec and implementations stabilize, it will likely
+//        be appropriate to use requestAnimationFrame instead of a generic
+//        timer function based on setInterval.
+
+function init()
+{
+  for (i=0; i< TOTAL_LINES; i++)
+  {
+    p[i] = document.getElementById("p"+i) ;
+    dx[i] = 9 ;
+    //dx[i] = Math.floor((Math.random()*10)+1);
+    //dy[i] = Math.floor((Math.random()*10)+1);
+    dy[i] = dx[i] ;
+  }
+}     
+
+function reset()
+{
+  document.getElementById("p0").setAttribute("points","200,200,200,200" ) ;
+}
+
+function start()
+{
+  document.getElementById("btnStart").disabled=true ;
+  document.getElementById("btnStop").disabled=false ;
+  intv = window.setInterval("move()",16);
+}
+
+function stop()
+{
+  document.getElementById("btnStart").disabled=false ;
+  document.getElementById("btnStop").disabled=true;
+  window.clearInterval(intv);
+}
+
+function move()
+{
+  for (i=0; i < p.length; i++)
+  {
+    pts  = p[i].getAttribute("points") ;
+    ptsi = pts.split(",") ;
+
+    px = parseInt(ptsi[ptsi.length-2]) ;
+    py = parseInt(ptsi[ptsi.length-1]) ;
+    
+    addPoint = false ;
+    if ( py + r >= h)
+    {
+      dy[i] *= -1 ;
+      addPoint = true ;
+    }
+    if ( px + r >= w)
+    {
+      dx[i] *= -1
+      addPoint = true ;
+    }
+    if ( py - r <= 0)
+    {
+      dy[i] *= -1
+      addPoint = true ;
+    }
+    if ( px - r <= 0)
+    {
+      dx[i]  *= -1
+      addPoint = true ;
+    }
+
+    newy = py + dy[i] ;
+    newx = px + dx[i] ;
+
+    if ( addPoint )
+    {
+      // We changed direction so add a new point to the polyline.
+      p[i].setAttribute("points",pts+","+newx+","+newy);
+    }
+    else
+    {
+      // We have not changed direction so just modify the last point
+      // currently in the line (this is a performance optimization over
+      // adding a new point every time we move which could create massive
+      // point arrays quite quickly).
+      tmp = pts.substring(0,pts.lastIndexOf(","));
+      tmp = tmp.substring(0,tmp.lastIndexOf(","));
+      p[i].setAttribute("points",tmp+","+newx+","+newy);
+    }  
+  }  
+}
+
+</script>                             
+</head>
+
+<body onload="init()">
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='820' height='620'>
+  <defs>
+    <clipPath id="clip1">
+      <path d="M0,0 h800 v600 h-800z"
+            clip-rule="evenodd" />
+    </clipPath>   
+  </defs>
+  <rect id="r1" x="0" y="0" width="800" height="600" fill="#eeeeee" stroke="black"/>
+  <g clip-path="URL(#clip1)" stroke-opacity="0.8" stroke-width="4" fill="none">
+    <polyline id="p1" points="200,200,200,200" stroke="blue" />
+    <polyline id="p0" points="20,20,20,20" stroke="blue" />
+  </g>
+</svg>       
+
+<br><br>
+<button onClick="start()" id="btnStart">Start</button>  
+<button onClick="stop()"id="btnStop" disabled="true">Stop</button> 
+<button onClick="reset()">Reset</button> 
+</body>
+</html>
+

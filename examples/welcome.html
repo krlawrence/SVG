@@ -1,0 +1,66 @@
+<html>
+<head>
+<meta name='description' content='Machine generated SVG using a Ruby script.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='October 2002' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'>
+
+    <defs>
+      <linearGradient id="grad1" x1="200" y1="40" x2="400" y2="200" gradientUnits="userSpaceOnUse">
+        <stop offset="0%"   stop-color="red"/>
+        <stop offset="17%"  stop-color="orange"/>
+        <stop offset="34%"  stop-color="yellow"/>
+        <stop offset="51%"  stop-color="green"/>
+        <stop offset="68%"  stop-color="blue"/>
+        <stop offset="85%"  stop-color="magenta"/>
+        <stop offset="100%" stop-color="purple"/>
+      </linearGradient>
+
+     <pattern id="plaster" x="0" y="0" width="64" height="64" patternUnits="userSpaceOnUse">
+       <image width="231" height="231" xlink:href="plaster.jpg" />
+     </pattern>
+
+    </defs>
+
+    <rect x="0" y="0" width="100%" height="100%" fill="URL(#plaster)" />
+
+    <g font-family="Times New Roman" font-size="96" transform="translate(30,50)">
+
+      <g>
+        <text x="205" y="80" fill="black" fill-opacity="0.6">Welcome !</text>
+        <text x="200" y="80" fill="URL(#grad1)">Welcome !</text>
+        <animate attributeName="opacity" from="1" to="0" dur="2s" repeatCount="indefinite"/>
+      </g>
+
+      <text font-size="72" x="26" y="201" fill="black" fill-opacity="0.6">Using XML to draw pictures</text>
+      <text font-size="72" x="26" y="301" fill="black" fill-opacity="0.6">an introduction to ...</text>
+      <g>
+        <text font-size="72" x="25" y="200" fill="blue">Using XML to draw pictures
+        <animateColor values="red;yellow;blue;green" dur="10s" repeatCount="indefinite"
+                      attributeType="XML" attributeName="fill" />
+        </text>
+
+        <text font-size="72" x="25" y="300" fill="blue">an introduction to ...
+
+        <animateColor values="red;yellow;blue;green" dur="10s" repeatCount="indefinite"
+                      attributeType="XML" attributeName="fill" />
+        </text>
+      </g>
+
+      <text font-size="110" id="krl" x="302" y="452" fill="black" fill-opacity='0.6'> SVG</text>
+      <text font-size="110" id="krl" x="300" y="450" fill="blue">SVG</text>
+      <text font-size="24 " x="200" y="650" fill="black">Created by Kelvin R. Lawrence</text>
+      <text font-size="24 " x="150" y="690" fill="black">(at various times between 1998 and 2013)</text>
+      <g>
+        <text font-size="60" id="krl" x="-800" y="600" fill="green">*** SVG *** SVG *** SVG ***</text>
+                                              
+        <animateTransform attributeName="transform" type="translate"
+           by="1700 0" dur="8s" repeatCount="indefinite" fill="freeze" end="krl.click"/>
+
+      </g>
+  </g>
+</svg>
+</body>
+</html>

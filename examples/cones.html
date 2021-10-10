@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='description' content='Drawing pseudo-3D cones in 2D.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Tue Apr 09 08:26:00 -0500 2013' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'>
+<g stroke='#00a' fill-opacity='1.0' fill='none'>
+  <path d="M100,200 L150,100,200,200 A 50,10,0,0,1,100,200" />
+
+  <path d="M250,200 l50,-100,50,100 a 50,10,0,0,1,-100,0 a 50,10,0,0,1,100,0" />
+
+  <path d="M400,200 l50,-100,50,100 a 50,10,0,0,1,-100,0" />
+  <path d="M400,200 a 50,10,0,0,1,100,0" stroke-dasharray="2 2" />
+  
+  <path d="M550,200 l50,-100,50,100 a 50,10,0,0,1,-100,0" fill="orange" />
+
+  <path d="M700,200 a 50,10,0,0,1,100,0" stroke-dasharray="2 2" />
+  <path d="M700,200 l50,-100,50,100 a 50,10,0,0,1,-100,0" fill="orange" fill-opacity="0.5"/>
+</g>
+</svg>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta name='description' content='Using clips in SVG.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='2012-06-12 08:11:25 -0500' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'>
+
+  <defs>
+    <clipPath id="castle">
+      <path d="M 150,350 h -100 v -200 h 25 v 25 h 25 v -25 h 25 v 25 h 25 v -25
+               h 25 v 25 h 25 v -25 h 25 v 25 h 25 v -25 h 25 v 25
+               h 25 v -25 h25 v 25 h 25 v -25 h 25 v 200 h -100
+               v -75 q -60,-75 -125,0 z
+               M 100 230 v 25 h 5 v -25 h 10 v -5 h -10 v -10 h -5
+               v 10 h -10 v 5 z
+               M 320 230 v 25 h 5 v -25 h 10 v -5 h -10 v -10 h -5
+               v 10 h -10 v 5 z
+               " />
+
+    </clipPath>
+  </defs>
+
+  <g clip-path="URL(#castle)">
+    <rect x="0" y="150" width="500" height="20" fill="red" />
+    <rect x="0" y="170" width="500" height="20" fill="yellow" />
+    <rect x="0" y="190" width="500" height="20" fill="green" />
+    <rect x="0" y="210" width="500" height="20" fill="blue" />
+    <rect x="0" y="230" width="500" height="20" fill="red" />
+    <rect x="0" y="250" width="500" height="20" fill="yellow" />
+    <rect x="0" y="270" width="500" height="20" fill="green" />
+    <rect x="0" y="290" width="500" height="20" fill="blue" />
+    <rect x="0" y="310" width="500" height="20" fill="red" />
+    <rect x="0" y="330" width="500" height="20" fill="yellow" />
+  </g>
+
+ 
+
+</svg>
+</body>
+</html>

@@ -1,0 +1,57 @@
+
+<!-- ========================================================  -->
+<!-- symbol10.svg                                              -->
+<!--                                                           -->
+<!-- An example of defining symbols in SVG using the <symbol>  -->
+<!-- element and then referencing them via the <use> element.  -->
+<!--                                                           -->
+<!-- In this case the style information for the symbol is      -->
+<!-- defined as part of the <symbol> definition itself but     -->
+<!-- the stroke color is then overridden on the <use>.         -->
+<!-- Therefore, when the image is rendered all of the shapes   -->
+<!-- should be stroked in blue. Also, the <use> changes the    -->
+<!-- stroke-width value to test that it can be overridden.     -->
+<!--                                                           -->
+<!-- Author : Kelvin R. Lawrence   30th-November-1999          -->
+<!--                                                           -->
+<!-- History:                                                  -->
+<!--  30-Nov-1999 -KRL- Created. Matching 19990812 spec        -->
+<!--  10-Dec-1999 -KRL- Verified with svg-19991203.dtd         -->
+<!--  29-Mar-2000 -KRL- Verified with the 20000303 DTD.        -->
+<!--  02-Aug-2000 -KRL- Verified with the 20000802 DTD.        -->
+<!--  07-Jun-2012 -KRL- Migrated to HTML5 inline SVG.          -->                                                         
+<!-- ========================================================  -->
+<html> 
+<head>  
+<meta name='description' content='.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='2012-06-07 12:17:55 -0500' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'>   
+  <defs>
+    <symbol id="symbol1" overflow="visible">
+      <ellipse cx="10" cy="10" rx="20" ry="10" style="stroke:blue;fill:red"/>
+      <path d="M 10,10 h 30 l -15 25 z" style="stroke:green;fill:yellow"/>
+    </symbol>
+  </defs>
+
+  <g style="text-rendering:optimizeLegibility;shape-rendering:auto">
+    <text x="5" y="20" style="font-size:24">SVG Demo: Defining and using symbols</text>
+  </g>
+
+  <use xlink:href="#symbol1"  transform="translate(100,50)"/>
+  <use xlink:href="#symbol1"  style="stroke:blue;stroke-width:4" transform="translate(150,50)"/>
+  <use xlink:href="#symbol1"  style="stroke:blue;stroke-width:4" transform="translate(200,50)"/>
+  <use xlink:href="#symbol1"  style="stroke:blue;stroke-width:4" transform="translate(250,50)"/>
+  <use xlink:href="#symbol1"  style="stroke:blue;stroke-width:4" transform="translate(100,100)"/>
+  <use xlink:href="#symbol1"  style="stroke:blue;stroke-width:4" transform="translate(100,150)"/>
+  <use xlink:href="#symbol1"  style="stroke:blue;stroke-width:4" transform="translate(100,200)"/>
+  <use xlink:href="#symbol1"  style="stroke:blue;stroke-width:4" transform="translate(100,250)"/>
+
+  <use xlink:href="#symbol1"  style="stroke:blue;stroke-width:4" transform="matrix(2 0 0 2 170 120)"/>
+  <use xlink:href="#symbol1"  style="stroke:blue;stroke-width:4" transform="matrix(2 0 0 2 170 220)"/>
+
+</svg>
+</body>
+</html>  

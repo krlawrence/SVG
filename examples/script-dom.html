@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta name='description' content='Machine generated SVG using a Ruby script.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Fri Jun 08 14:42:32 -0500 2012' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='600'> 
+
+  <script type="text/ecmascript">
+  <![CDATA[
+
+    function hide_me(evt)
+    {
+      var obj = evt.target ;
+      obj.setAttribute("visibility","hidden");
+    }
+
+    function reset()
+    {
+      document.getElementById("c1").setAttribute("visibility", "visible");
+      document.getElementById("c2").setAttribute("visibility", "visible");
+      document.getElementById("r1").setAttribute("visibility", "visible");
+      document.getElementById("r2").setAttribute("visibility", "visible");
+      document.getElementById("e1").setAttribute("visibility", "visible");
+    }
+  ]]>
+  </script>
+
+  <!-- As the mouse moves over a shape, hide it! -->
+  <text x="50" y="550" font-size="24">Move the mouse over a shape to make it vanish!</text>
+  <g stroke="black" stroke-width="8">
+    <circle id="c1" onmouseover="hide_me(evt)" cx="400" cy="160" r="150" fill="blue"/>
+    <rect id="r1" onmouseover="hide_me(evt)" x="150" y="200" height="200" width="300" fill="green"/>
+    <ellipse id="e1" onmouseover="hide_me(evt)" cx="150" cy="300" rx="100" ry="200" fill="red" />
+    <circle  id="c2" onmouseover="hide_me(evt)" cx="150" cy="150" r="130" fill="yellow" />
+    <rect id="r2" onmouseover="hide_me(evt)" x="250" y="320" height="160" width="250" fill="orange"/>
+  </g>
+</svg>
+  <br>
+  <button name="b1" type="button" onclick="reset()">Reset</button>
+</body>
+</html>

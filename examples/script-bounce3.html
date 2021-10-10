@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SVG Bouncing ball</title>
+<meta name='description' content='Uses script to move a ball around.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Mon Apr 15 10:56:12 2013 CDT' />
+
+<script> 
+c = [null,null,null,null,null] ;
+r = 25 ;
+h = 600 ;
+w = 800 ;
+d = 5;
+dx = [d,d,d,d,d];
+dy = [d,d,d,d,d];
+intv = null ;
+
+
+// LATER: Once the HTML5 spec and implementations stabilize, it will likely
+//        be appropriate to use requestAnimationFrame instead of a generic
+//        timer function based on setInterval.
+
+function init()
+{
+  c[0] = document.getElementById("c1") ;
+  c[1] = document.getElementById("c2") ;
+  c[2] = document.getElementById("c3") ;
+  c[3] = document.getElementById("c4") ;
+  c[4] = document.getElementById("c5") ;
+}                
+
+function start()
+{
+  document.getElementById("btnStart").disabled=true ;
+  document.getElementById("btnStop").disabled=false ;
+  intv = window.setInterval("move()",16);
+}
+
+function stop()
+{
+  document.getElementById("btnStart").disabled=false ;
+  document.getElementById("btnStop").disabled=true;
+  window.clearInterval(intv);
+}
+
+function move()
+{
+  for (i=0; i<c.length; i++)
+  {
+    cx = parseInt(c[i].getAttribute("cx")) ;
+    cy = parseInt(c[i].getAttribute("cy")) ;
+
+    if ( cy + r >= h)
+    {
+      dy[i] = -d ; 
+    }
+    if ( cx + r >= w)
+    {
+      dx[i] = -d
+    }
+    if ( cy - r <= 0)
+    {
+      dy[i] = d
+    }
+    if ( cx - r <= 0)
+    {
+      dx[i] = d
+    }
+
+    cx += dx[i];
+    cy += dy[i];
+    c[i].setAttribute("cx",cx);
+    c[i].setAttribute("cy",cy);
+  }  
+}
+
+</script>                             
+</head>
+
+<body onload="init()">
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='820' height='620'>
+  <defs>
+    <clipPath id="clip1">
+      <path d="M0,0 h800 v600 h-800z"
+            clip-rule="evenodd" />
+    </clipPath>   
+  </defs>
+  <rect id="r1" x="0" y="0" width="800" height="600" fill="#eeeeee" stroke="black"/>
+  <g clip-path="URL(#clip1)" fill-opacity="0.8">
+    <circle id="c1" cx="200" cy="200" r="25" fill="blue" />
+    <circle id="c2" cx="700" cy="100" r="25" fill="red" />
+    <circle id="c3" cx="500" cy="400" r="25" fill="green" />
+    <circle id="c4" cx="100" cy="400" r="25" fill="purple" />
+    <circle id="c5" cx="400" cy="50"  r="25" fill="orange" />
+  </g>
+</svg>       
+
+<br><br>
+<button onClick="start()" id="btnStart">Start</button>  
+<button onClick="stop()"id="btnStop" disabled="true">Stop</button> 
+</body>
+</html>
+

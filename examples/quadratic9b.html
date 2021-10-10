@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Quadratic curves and a gradient</title>
+<meta name='description' content='Simple shape made of quadratic curves filled with a gradient.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Wed May 1 15:16 CDT 2013' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'>
+
+<defs>
+  <radialGradient
+    cx = "200"
+    cy = "200"
+    r  = "128"
+    id = "r1"
+    gradientUnits="userSpaceOnUse">
+    <stop style="stop-color:#ffff00;stop-opacity:1" offset="0" />
+    <stop style="stop-color:#dd4417;stop-opacity:0.9" offset="1" />
+  </radialGradient>
+</defs>
+
+<g stroke = "none" fill="URL(#r1)" stroke-width="1">
+<path d="M150,350 q100,-50 200,0 l0,-300 q-100,50 -200,0 z" />
+</g>
+</svg>
+
+</body>
+</html>
+
+
+

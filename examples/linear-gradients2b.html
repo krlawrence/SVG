@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta name='description' content='Examples of linear gradients.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Tue May 14 14:55:00 CDT 2013' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'>
+
+<defs>
+
+<!-- Horizontal gradient -->
+  <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%"  stop-color="#ca0"/>
+    <stop offset="50%" stop-color="white"/>
+    <stop offset="100%" stop-color="#ca0"/>
+  </linearGradient>
+
+  <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%"  stop-color="#000"/>
+    <stop offset="50%" stop-color="white"/>
+    <stop offset="100%" stop-color="#000"/>
+  </linearGradient>
+
+  <linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%"  stop-color="#555"/>
+    <stop offset="50%" stop-color="white"/>
+    <stop offset="100%" stop-color="#555"/>
+  </linearGradient>
+
+<!-- Shape we can re-use -->
+  <path id="shield" d="M0,0 q100,120 200,0 v-200 h-200z"/>
+</defs> 
+
+<text x="5" y="20" font-size="24">SVG Demo: Linear gradients.</text>
+
+<use xlink:href="#shield" fill="url(#g1)" transform="translate(50,300)"  stroke="#000" />
+<use xlink:href="#shield" fill="url(#g2)" transform="translate(300,300)" stroke="#000" />
+<use xlink:href="#shield" fill="url(#g3)" transform="translate(550,300)" stroke="#555" />
+
+</svg>
+</body>
+</html>

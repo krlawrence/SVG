@@ -1,0 +1,38 @@
+<html>
+<head>
+<meta name='description' content='' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Sat Jun 09 20:02:01 -0500 2012' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1400' height='1400'>
+<text x="5" y="20" style="font-size:22">SVG Demo: Quadratic curves</text>
+
+<polyline stroke="blue" fill="none" points="50,200,150,500,250,200"/>
+<polyline stroke="blue" fill="none" points="300,500,400,200,500,500"/>
+<polyline stroke="blue" fill="none" points="550,500,650,50,750,500"/>
+<polyline stroke="blue" fill="none" points="800,500,1100,250,1100,500"/>
+<polyline stroke="blue" fill="none" points="50,850,350,600,650,850"/>
+<polyline stroke="blue" fill="none" points="700,850,1000,600,1300,850"/>
+<polyline stroke="blue" fill="none" points="1300,850,1000,1100,700,850"/>
+
+<g style="stroke:#D90000; fill:none; stroke-width:8; stroke-linecap:round">
+  <path d="M 50,200  Q 150,500,250,200"/> 
+  <path d="M 300,500 Q 400,200,500,500"/> 
+  <path d="M 550,500 Q 650,50,750,500"/> 
+  <path d="M 800,500 q 300,-250,300,0"/> 
+
+  <path d="M 50,850 q 300,-250,600,0"/> 
+  <path d="M 700,850 q 300,-250,600,0,-300,250,-600,0"/> 
+</g>
+
+<text x="30" y="550">M 50,200 Q 150,500,250,200</text>
+<text x="300" y="550">M 300,500 Q 400,200,500,500</text>
+<text x="560" y="550">M 550,500 Q 650,50,750,500</text>
+<text x="810" y="550">M 800,500 q 300,-250,300,0</text>
+<text x="250" y="860">M 50,850 q 300,-250,600,0</text>
+<text x="850" y="860">M 700,850 q 300,-250,600,0,-300,250,-600,0</text>
+
+</svg>
+</body>
+</html>

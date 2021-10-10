@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='description' content='Example of using script to adjust SVG fill opacity' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Sat Mar 30 21:20:33 CDT 2013' />
+
+<script> 
+
+max = 200 ;
+min = 10 ;
+inc = 5 ;
+rect = null ;
+txt  = null ;
+sldr = null ;
+
+// -----------------------------------------------------------------------------
+// init
+// -----------------------------------------------------------------------------
+function init()
+{
+  circle = document.getElementById("c1");
+  line = document.getElementById("l1");
+  txt  = document.getElementById("t1"); 
+  area = document.getElementById("t2");
+  circ = document.getElementById("t3");
+  sldr = document.getElementById("slider1"); 
+  updateText( circle.getAttribute("r") ) ;
+}
+
+// -----------------------------------------------------------------------------
+// doUpdate
+// -----------------------------------------------------------------------------
+function doUpdate(increase)
+{    
+  num   = parseInt(circle.getAttribute("r"));
+  if (increase)
+  {
+    num += inc;
+    if (num > max) { num = max}
+  }
+  else
+  {
+    num -= inc
+    if (num < min) { num = min}
+  }
+  updateText(num) ;  
+}
+
+// -----------------------------------------------------------------------------
+// doSlider
+// -----------------------------------------------------------------------------
+function doSlider()
+{
+  num = sldr.value ;
+  updateText(num) ;
+}
+
+// -----------------------------------------------------------------------------
+// updateText
+// -----------------------------------------------------------------------------
+function updateText( val )
+{
+  circle.setAttribute("r",val);
+  line.setAttribute("x2", parseInt(circle.getAttribute("cx")) + parseInt(val));
+  txt.textContent = val;
+  sldr.value = val ;  
+  a = Math.PI * val * val ;
+  area.textContent = a.toFixed(2);
+  c = Math.PI * val * 2;
+  circ.textContent = c.toFixed(2);
+}
+
+</script>                             
+</head>
+
+<body onload="init()">
+<h3>Scripting test</h3>
+Click a button or move the slider (if available) to adjust the radius. The slider
+is an HTML 5 feature and not supported by all browsers currently.
+
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='500'>
+<g fill="none" stroke-width="2">
+  <circle cx="220" cy="220" r="100" id="c1" stroke="#999"/>
+  <line x1="220" y1="220" x2="320" y2="220" id="l1" stroke="lightblue"/>
+</g>
+<text x="210" y="210" id="t1">100</text>
+<text x="70" y="440">Area : </text>
+<text x="120" y="440" id="t2">.</text>
+<text x="5" y="460">Circumference : </text>
+<text x="120" y="460" id="t3">.</text>
+</svg>
+
+<br><br>
+<button onClick="doUpdate(false)">-</button>  
+<input type="range" min="10" max="200" step="5" value="1" onchange="doSlider()" id="slider1"/>
+<button onClick="doUpdate(true)">+</button> 
+</body>
+</html>
+
+

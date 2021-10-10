@@ -1,0 +1,110 @@
+<html>
+<head>
+<meta name='description' content='Using SVG and script together' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='2012-06-13 11:09:19 -0500' />
+
+<script>
+var vals = new Array(0,0,0,0,0,0,0,0,0)
+var bars = new Array( "Cheese","Milk","Bread","Soup","Coffee",
+                        "Tea","Sugar","Eggs","Cookies") ;
+
+// -----------------------------------------------------------------------------
+// doUpdate
+// -----------------------------------------------------------------------------
+function doUpdate()
+{
+  for( i=0; i < bars.length; i++ )
+  {
+    n = bars[i] ;
+    v = 50 ;
+    v = Math.floor(Math.random()*250)
+    vals[i] = v;
+    document.getElementById(n).setAttribute("height",v);
+  }
+}
+
+function showTip(evt)
+{
+  // LATER: Need to find a proper way to calculate offset to start of 
+  // SVG viewport on the browsers display.
+  xoffset = 20;
+  yoffset = 200;
+
+  var x=evt.clientX;
+  var y=evt.clientY;
+
+  var node = evt.target.getAttribute("id");
+  var index = 0;
+ 
+  for( i=0; i < bars.length; i++ )
+  {
+    if (bars[i] == node)
+    {
+      index = i;
+      break;
+    }
+  }
+
+  var rct = document.getElementById("r1");
+  var txt = document.getElementById("t1");
+  rct.setAttribute("x",x-xoffset);
+  rct.setAttribute("y",y-yoffset);   
+  txt.setAttribute("x",x+10);   
+  txt.setAttribute("y",y+15-yoffset);  
+  txt.childNodes[0].nodeValue=vals[index];
+  document.getElementById("g1").setAttribute("visibility","visible");
+}
+
+function hideTip()
+{
+  document.getElementById("g1").setAttribute("visibility","hidden");
+} 
+</script>
+</head>
+
+<body>
+<h2>Dynamic (via scripting) SVG example</h2>
+  This test simulates building a bar graph based on real time
+  data coming in to an HTML5 application. Move the mouse over a bar to see its value.
+ 
+<p style="font-size:36;color:blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sales of selected products
+<br>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='500' height='400'>
+  <Line X1="50" Y1="20" X2="50" Y2="300" Stroke="Blue" StrokeThickness="2"/>
+  <Line X1="50" Y1="300" X2="420" Y2="300" Stroke="Blue" StrokeThickness="2" id="xaxis"/>
+
+  <g transform="matrix(1 0 0 -1 0 300)"  
+     onmouseover="showTip(evt)" onmouseleave="hideTip()">
+    <rect y="1" x="60" width="20" height="1" Fill="Red" id="Cheese"/> 
+    <rect y="1" x="100" width="20" height="1" Fill="Blue" id="Milk" />
+    <rect y="1" x="140" width="20" height="1" Fill="Yellow" id="Bread" />
+    <rect y="1" x="180" width="20" height="1" Fill="Cyan" id="Soup" />
+    <rect y="1" x="220" width="20" height="1" Fill="Magenta" id="Coffee" />
+    <rect y="1" x="260" width="20" height="1" Fill="Green" id="Tea" />
+    <rect y="1" x="300" width="20" height="1" Fill="Orange" id="Sugar" />
+    <rect y="1" x="340" width="20" height="1" Fill="Purple" id="Eggs" />
+    <rect y="1" x="380" width="20" height="1" Fill="Brown" id="Cookies" />
+  </g>
+  <g font-size="18" fill="black">
+   <text y="0" x="0" transform="translate(65,310) rotate(90)">Cheese</text>
+   <text y="0" x="0" transform="translate(105,310) rotate(90)">Milk</text>
+   <text y="0" x="0" transform="translate(145,310) rotate(90)">Bread</text>
+   <text y="0" x="0" transform="translate(185,310) rotate(90)">Soup</text>
+   <text y="0" x="0" transform="translate(225,310) rotate(90)">Coffee</text>
+   <text y="0" x="0" transform="translate(265,310) rotate(90)">Tea</text>
+   <text y="0" x="0" transform="translate(305,310) rotate(90)">Sugar</text>
+   <text y="0" x="0" transform="translate(345,310) rotate(90)">Eggs</text>
+   <text y="0" x="0" transform="translate(385,310) rotate(90)">Cookies</text>
+  </g>
+
+  <g id="g1" visibility="hidden" font-size="12">
+    <rect x="0" y="0" width="80" height="20" id="r1" fill="palegoldenrod"/>
+    <text x="10" y="5" fill="black" id="t1">0</text>
+  </g>
+</svg>
+<p>Click Update to refresh the graph.
+<br><br>
+<button onClick="doUpdate()">Update</button>
+</body>
+</html>

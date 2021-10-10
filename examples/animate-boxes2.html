@@ -1,0 +1,55 @@
+<html>
+<head>
+<meta name='description' content='Example of animating a transform.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Fri Apr 12 19:15:06 CDT 2013' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'>
+<g stroke='blue' fill='none'>
+  <path d='M 200,200 h50 v50 h-50z' >
+
+   <animateTransform attributeName="transform" 
+                     attributeType="XML" 
+                     type="rotate"
+                     from="0 225 225"
+                     to="360 225 225"
+                     dur="5s"
+                     repeatCount="indefinite"/>
+  </path>
+
+  <path d='M300,200 h50 v50 h-50z' >
+
+   <animateTransform attributeName="transform" 
+                     attributeType="XML" 
+                     type="rotate"
+                     from="0 325 225"
+                     to="360 325 225"
+                     dur="5s"
+                     repeatCount="indefinite"/>
+  </path> 
+
+  <path d='M400,200 h50 v50 h-50z' >
+
+   <animateTransform attributeName="transform" 
+                     attributeType="XML" 
+                     type="rotate"
+                     type="rotate"
+                     from="0 425 225"
+                     to="360 425 225"
+                     dur="5s"
+                     repeatCount="indefinite"/>
+  </path> 
+
+  <animateTransform attributeName="transform" 
+                    attributeType="XML" 
+                    type="rotate"
+                    from="0 325 225"
+                    to="360 325 225"
+                    dur="10s"
+                    repeatCount="indefinite"/>
+</g>
+</svg>
+</body>
+</html>
+

@@ -1,0 +1,24 @@
+<?xml version="1.0" standalone="yes"?>
+<svg width="455" height="392" >
+ 
+  <g fill="none" stroke="blue" > 
+    <path d="M 355,97 L 66,97 M 56,154 L 57,342" />"
+  </g>
+ 
+  <g fill="none" stroke="black" stroke-width="3"> 
+    <path d="M 355,97 C 66,97 56,154 57,342" />"
+  </g>
+ 
+  <g fill="red"  > 
+    <circle r="3" cx="355" cy="97"  />
+    <circle r="3" cx="66" cy="97"  />
+    <circle r="3" cx="56" cy="154"  />
+    <circle r="3" cx="57" cy="342"  />
+  </g>
+  <text x="340" y="97">0</text>
+  <text x="51" y="97">1</text>
+  <text x="41" y="154">2</text>
+  <text x="42" y="342">3</text>
+  <text x="20" y="372"> d="M 355,97 C 66,97 56,154 57,342" </text>
+ 
+</svg>

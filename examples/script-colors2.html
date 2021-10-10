@@ -1,0 +1,68 @@
+<html>
+<head>
+<meta name='description' content='Using SVG and script together' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='2012-11-12 13:56:00 -0600' />
+
+<script>
+
+// -----------------------------------------------------------------------------
+// doUpdate
+// -----------------------------------------------------------------------------
+function doUpdate()
+{
+  for (i=1; i<=24; i++)
+  {
+    id = "r" + i
+    rect = document.getElementById(id);
+    //col = rect.getAttribute("fill");
+
+    r = Math.floor(Math.random()*256) ;
+    g = Math.floor(Math.random()*256) ;
+    b = Math.floor(Math.random()*256) ;
+    newcol = "rgb("+r+","+g+","+b+")";
+    rect.setAttribute("fill",newcol);
+  }  
+}
+
+</script>
+</head>
+
+<body>
+<h2>SVG and scripting example</h2>
+
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='500' height='400'>
+  <g stroke="black">
+  <rect id="r1"  x="50"  y="50"  width="100" height="50" Fill="blue"/> 
+  <rect id="r2"  x="150" y="50"  width="100" height="50" Fill="yellow"/> 
+  <rect id="r3"  x="250" y="50"  width="100" height="50" Fill="blue"/> 
+  <rect id="r4"  x="350" y="50"  width="100" height="50" Fill="yellow"/> 
+  <rect id="r5"  x="50"  y="100" width="100" height="50" Fill="yellow"/> 
+  <rect id="r6"  x="150" y="100" width="100" height="50" Fill="blue"/> 
+  <rect id="r7"  x="250" y="100" width="100" height="50" Fill="yellow"/> 
+  <rect id="r8"  x="350" y="100" width="100" height="50" Fill="blue"/> 
+  <rect id="r9"  x="50"  y="150" width="100" height="50" Fill="blue"/> 
+  <rect id="r10" x="150" y="150" width="100" height="50" Fill="yellow"/> 
+  <rect id="r11" x="250" y="150" width="100" height="50" Fill="blue"/> 
+  <rect id="r12" x="350" y="150" width="100" height="50" Fill="yellow"/> 
+  <rect id="r13" x="50"  y="200" width="100" height="50" Fill="yellow"/> 
+  <rect id="r14" x="150" y="200" width="100" height="50" Fill="blue"/> 
+  <rect id="r15" x="250" y="200" width="100" height="50" Fill="yellow"/> 
+  <rect id="r16" x="350" y="200" width="100" height="50" Fill="blue"/> 
+  <rect id="r17" x="50"  y="250" width="100" height="50" Fill="blue"/> 
+  <rect id="r18" x="150" y="250" width="100" height="50" Fill="yellow"/> 
+  <rect id="r19" x="250" y="250" width="100" height="50" Fill="blue"/> 
+  <rect id="r20" x="350" y="250" width="100" height="50" Fill="yellow"/> 
+  <rect id="r21" x="50"  y="300" width="100" height="50" Fill="yellow"/> 
+  <rect id="r22" x="150" y="300" width="100" height="50" Fill="blue"/> 
+  <rect id="r23" x="250" y="300" width="100" height="50" Fill="yellow"/> 
+  <rect id="r24" x="350" y="300" width="100" height="50" Fill="blue"/> 
+  </g>
+</svg>
+
+<p>Click Update to randomize the colors.
+<br><br>
+<button onClick="doUpdate()">Update</button>
+</body>
+</html>
+

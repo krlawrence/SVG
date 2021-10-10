@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Animated circles using script</title>
+<meta name='description' content='Uses script to build a simple progress bar.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Tue Jul 29 14:00:00 2013 CDT' />
+
+<script> 
+  rect = null;
+  txt = null;
+  d = 1;
+  wmin = 0;
+  wmax = 199;
+
+// LATER: Once the HTML5 spec and implementations stabilize, it will likely
+//        be appropriate to use requestAnimationFrame instead of a generic
+//        timer function based on setInterval.
+
+function init()
+{
+  rect = document.getElementById("r2") ;
+  txt  = document.getElementById("t1") ;
+  
+}                
+
+function start()
+{
+  document.getElementById("btnStart").disabled=true ;
+  document.getElementById("btnStop").disabled=false ;
+  intv = window.setInterval("move()",16);
+}
+
+function stop()
+{
+  document.getElementById("btnStart").disabled=false ;
+  document.getElementById("btnStop").disabled=true;
+  window.clearInterval(intv);
+}
+
+function move()
+{
+  w = parseInt(rect.getAttribute("width")) ;
+
+  if ( w < wmin || w >= wmax)
+  {
+    d = -d ;
+
+ }
+  w = w + d;
+  rect.setAttribute("width",w); 
+  txt.childNodes[0].nodeValue=Math.round(w/2)+"%";
+
+}
+
+</script>                             
+</head>
+
+<body onload="init()">
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='820' height='200'>
+  <rect x="50" y="100" width="200" height="20" fill="none" stroke="black" />
+  <rect x="51" y="101" width="0" height="18" fill="#00cc00" stroke="none" id="r2"/>
+  <text id="t1" x="140" y="116">0%</text> 
+</svg>       
+
+<br><br>
+<button onClick="start()" id="btnStart">Start</button>  
+<button onClick="stop()" id="btnStop" disabled="true">Stop</button> 
+</body>
+</html>

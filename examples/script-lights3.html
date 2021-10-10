@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='description' content='Simple animated lights effect using script and SVG' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Tue Dec 31 15:36:21 -0600 2013' />
+
+<script>
+NUM_RECTS = 90 ; 
+c = new Array() ;    
+cols = ["red","orange"];
+offset = 1;
+
+intv = null ;
+
+function init()
+{
+  for (i=1; i<=NUM_RECTS; i++)
+  {
+    c[i] = document.getElementById(""+i) 
+  }
+}                
+
+function start()
+{
+  document.getElementById("btnStart").disabled=true ;
+  document.getElementById("btnStop").disabled=false ;
+  intv = window.setInterval("move()",100);
+}
+
+function stop()
+{
+  document.getElementById("btnStart").disabled=false ;
+  document.getElementById("btnStop").disabled=true;
+  window.clearInterval(intv);
+}
+
+function move()
+{
+  p = offset ;
+  for (i=1; i<=NUM_RECTS; i++)
+  {
+    c[i].setAttribute("fill",cols[p]) ; 
+    p += 1;
+    if (p >= cols.length ) {p = 0};  
+  } 
+  offset += 1;
+  if (offset >= cols.length ) {offset = 0};
+}
+</script>                       
+</head>
+
+<body onload="init()">
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='200'>
+<rect x='10' y='100' width='20' height='10' fill='red' id='1'/>
+<rect x='30' y='100' width='20' height='10' fill='orange' id='2'/>
+<rect x='50' y='100' width='20' height='10' fill='red' id='3'/>
+<rect x='70' y='100' width='20' height='10' fill='orange' id='4'/>
+<rect x='90' y='100' width='20' height='10' fill='red' id='5'/>
+<rect x='110' y='100' width='20' height='10' fill='orange' id='6'/>
+<rect x='130' y='100' width='20' height='10' fill='red' id='7'/>
+<rect x='150' y='100' width='20' height='10' fill='orange' id='8'/>
+<rect x='170' y='100' width='20' height='10' fill='red' id='9'/>
+<rect x='190' y='100' width='20' height='10' fill='orange' id='10'/>
+<rect x='210' y='100' width='20' height='10' fill='red' id='11'/>
+<rect x='230' y='100' width='20' height='10' fill='orange' id='12'/>
+<rect x='250' y='100' width='20' height='10' fill='red' id='13'/>
+<rect x='270' y='100' width='20' height='10' fill='orange' id='14'/>
+<rect x='290' y='100' width='20' height='10' fill='red' id='15'/>
+<rect x='310' y='100' width='20' height='10' fill='orange' id='16'/>
+<rect x='330' y='100' width='20' height='10' fill='red' id='17'/>
+<rect x='350' y='100' width='20' height='10' fill='orange' id='18'/>
+<rect x='370' y='100' width='20' height='10' fill='red' id='19'/>
+<rect x='390' y='100' width='20' height='10' fill='orange' id='20'/>
+<rect x='410' y='100' width='20' height='10' fill='red' id='21'/>
+<rect x='430' y='100' width='20' height='10' fill='orange' id='22'/>
+<rect x='450' y='100' width='20' height='10' fill='red' id='23'/>
+<rect x='470' y='100' width='20' height='10' fill='orange' id='24'/>
+<rect x='490' y='100' width='20' height='10' fill='red' id='25'/>
+<rect x='510' y='100' width='20' height='10' fill='orange' id='26'/>
+<rect x='530' y='100' width='20' height='10' fill='red' id='27'/>
+<rect x='550' y='100' width='20' height='10' fill='orange' id='28'/>
+<rect x='570' y='100' width='20' height='10' fill='red' id='29'/>
+<rect x='590' y='100' width='20' height='10' fill='orange' id='30'/>
+<rect x='610' y='100' width='20' height='10' fill='red' id='31'/>
+<rect x='630' y='100' width='20' height='10' fill='orange' id='32'/>
+<rect x='650' y='100' width='20' height='10' fill='red' id='33'/>
+<rect x='670' y='100' width='20' height='10' fill='orange' id='34'/>
+<rect x='690' y='100' width='20' height='10' fill='red' id='35'/>
+<rect x='710' y='100' width='20' height='10' fill='orange' id='36'/>
+<rect x='730' y='100' width='20' height='10' fill='red' id='37'/>
+<rect x='750' y='100' width='20' height='10' fill='orange' id='38'/>
+<rect x='770' y='100' width='20' height='10' fill='red' id='39'/>
+<rect x='790' y='100' width='20' height='10' fill='orange' id='40'/>
+<rect x='810' y='100' width='20' height='10' fill='red' id='41'/>
+<rect x='830' y='100' width='20' height='10' fill='orange' id='42'/>
+<rect x='850' y='100' width='20' height='10' fill='red' id='43'/>
+<rect x='870' y='100' width='20' height='10' fill='orange' id='44'/>
+<rect x='890' y='100' width='20' height='10' fill='red' id='45'/>
+<rect x='910' y='100' width='20' height='10' fill='orange' id='46'/>
+<rect x='930' y='100' width='20' height='10' fill='red' id='47'/>
+<rect x='950' y='100' width='20' height='10' fill='orange' id='48'/>
+<rect x='970' y='100' width='20' height='10' fill='red' id='49'/>
+<rect x='990' y='100' width='20' height='10' fill='orange' id='50'/>
+<rect x='1010' y='100' width='20' height='10' fill='red' id='51'/>
+<rect x='1030' y='100' width='20' height='10' fill='orange' id='52'/>
+<rect x='1050' y='100' width='20' height='10' fill='red' id='53'/>
+<rect x='1070' y='100' width='20' height='10' fill='orange' id='54'/>
+<rect x='1090' y='100' width='20' height='10' fill='red' id='55'/>
+<rect x='1110' y='100' width='20' height='10' fill='orange' id='56'/>
+<rect x='1130' y='100' width='20' height='10' fill='red' id='57'/>
+<rect x='1150' y='100' width='20' height='10' fill='orange' id='58'/>
+<rect x='1170' y='100' width='20' height='10' fill='red' id='59'/>
+<rect x='1190' y='100' width='20' height='10' fill='orange' id='60'/>
+<rect x='1210' y='100' width='20' height='10' fill='red' id='61'/>
+<rect x='1230' y='100' width='20' height='10' fill='orange' id='62'/>
+<rect x='1250' y='100' width='20' height='10' fill='red' id='63'/>
+<rect x='1270' y='100' width='20' height='10' fill='orange' id='64'/>
+<rect x='1290' y='100' width='20' height='10' fill='red' id='65'/>
+<rect x='1310' y='100' width='20' height='10' fill='orange' id='66'/>
+<rect x='1330' y='100' width='20' height='10' fill='red' id='67'/>
+<rect x='1350' y='100' width='20' height='10' fill='orange' id='68'/>
+<rect x='1370' y='100' width='20' height='10' fill='red' id='69'/>
+<rect x='1390' y='100' width='20' height='10' fill='orange' id='70'/>
+<rect x='1410' y='100' width='20' height='10' fill='red' id='71'/>
+<rect x='1430' y='100' width='20' height='10' fill='orange' id='72'/>
+<rect x='1450' y='100' width='20' height='10' fill='red' id='73'/>
+<rect x='1470' y='100' width='20' height='10' fill='orange' id='74'/>
+<rect x='1490' y='100' width='20' height='10' fill='red' id='75'/>
+<rect x='1510' y='100' width='20' height='10' fill='orange' id='76'/>
+<rect x='1530' y='100' width='20' height='10' fill='red' id='77'/>
+<rect x='1550' y='100' width='20' height='10' fill='orange' id='78'/>
+<rect x='1570' y='100' width='20' height='10' fill='red' id='79'/>
+<rect x='1590' y='100' width='20' height='10' fill='orange' id='80'/>
+<rect x='1610' y='100' width='20' height='10' fill='red' id='81'/>
+<rect x='1630' y='100' width='20' height='10' fill='orange' id='82'/>
+<rect x='1650' y='100' width='20' height='10' fill='red' id='83'/>
+<rect x='1670' y='100' width='20' height='10' fill='orange' id='84'/>
+<rect x='1690' y='100' width='20' height='10' fill='red' id='85'/>
+<rect x='1710' y='100' width='20' height='10' fill='orange' id='86'/>
+<rect x='1730' y='100' width='20' height='10' fill='red' id='87'/>
+<rect x='1750' y='100' width='20' height='10' fill='orange' id='88'/>
+<rect x='1770' y='100' width='20' height='10' fill='red' id='89'/>
+<rect x='1790' y='100' width='20' height='10' fill='orange' id='90'/>
+</svg>
+<br><br>
+<button onClick="start()" id="btnStart">Start</button>  
+<button onClick="stop()" id="btnStop" disabled="true">Stop</button>      
+</body>
+</html>
+

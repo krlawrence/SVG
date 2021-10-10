@@ -1,0 +1,20 @@
+<html>
+<head>
+<meta name='description' content='SVG Radial Gradient example' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='2012-05-23 08:57:02 -0500' />
+</head>
+
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='500' height='500'>
+<defs>
+<radialGradient id="radialGradient" fx="80%" fy="20%">
+<stop offset="0%" style="stop-color:white"/>
+<stop offset="20%" style="stop-color:#666688"/>
+<stop offset="95%" style="stop-color:black"/>
+</radialGradient>
+</defs>
+<rect width="100%" height="100%" fill="#00aa00"/>
+<circle cx="293" cy="257" r="70" fill="black" fill-opacity="0.4"/>
+<circle cx="300" cy="250" r="70" fill="url(#radialGradient)" fill-opacity="0.95"/><circle cx="300" cy="250" r="25" fill="#ffffff" fill-opacity="0.9"/>
+<text x="290" y="262" fill="black" font-size="36" fill-opacity="0.8">8</text>
+</svg>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SVG Bouncing balls</title>
+<meta name='description' content='Uses script to move a set of balls around.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Sun Apr 21 21:21:00 2013 CDT' />
+
+<script> 
+var svgNS = "http://www.w3.org/2000/svg";  
+ncircles = 1;
+nextId = 1;
+c = new Array() ;
+r = 15 ;
+h = 600 ;
+w = 800 ;
+cx1 = w/2 ;
+cy1 = h/2;
+d = 5;
+dx = new Array() ;
+dy = new Array() ;
+intv = null ;
+
+
+// LATER: Once the HTML5 spec and implementations stabilize, it will likely
+//        be appropriate to use requestAnimationFrame instead of a generic
+//        timer function based on setInterval.
+
+function init()
+{
+
+  for (i=0; i< ncircles; i++)
+  {
+    rx = 1;
+    ry = 1;
+    n1 = Math.floor((Math.random()*100)) ;
+    n2 = Math.floor((Math.random()*100)) ;
+    if (n1 > 50) {rx =-1} ;
+    if (n2 > 50) {ry =-1} ;
+
+    c[i]  = document.getElementById("c"+i) ;
+    dx[i] = Math.floor((Math.random()*10)+1) * rx  ;
+    dy[i] = Math.floor((Math.random()*10)+1) * ry  ;
+  }
+}     
+
+function randomize()
+{
+  for (i=0; i< ncircles; i++)
+  {
+    dx[i] = (dx[i]/Math.abs(dx[i])) * Math.floor((Math.random()*10)+1);
+    dy[i] = (dy[i]/Math.abs(dy[i])) * Math.floor((Math.random()*10)+1);
+    
+  }  
+}
+
+function start()
+{
+  document.getElementById("btnStart").disabled=true ;
+  document.getElementById("btnStop").disabled=false ;
+  intv = window.setInterval("move()",16);
+}
+
+function stop()
+{
+  document.getElementById("btnStart").disabled=false ;
+  document.getElementById("btnStop").disabled=true;
+  window.clearInterval(intv);
+}
+
+function move()
+{
+  for (i=0; i < c.length; i++)
+  {
+    cx = parseInt(c[i].getAttribute("cx")) ;
+    cy = parseInt(c[i].getAttribute("cy")) ;
+
+    if ( cy + r >= h)
+    {
+      dy[i] *= -1
+    }
+    if ( cx + r >= w)
+    {
+      dx[i] *= -1
+    }
+    if ( cy - r <= 0)
+    {
+      dy[i] *= -1
+    }
+    if ( cx - r <= 0)
+    {
+      dx[i]  *= -1
+    }
+
+    cx += dx[i];
+    cy += dy[i];
+    c[i].setAttribute("cx",cx);
+    c[i].setAttribute("cy",cy);
+  }  
+}
+
+function addCircle()
+{
+  nc = document.createElementNS(svgNS,"circle");
+  nc.setAttribute("id","c"+nextId);
+  nc.setAttribute("cx",cx1);
+  nc.setAttribute("cy",cy1);
+  nc.setAttribute("r",r);
+
+  red = Math.floor(Math.random()*255); 
+  grn = Math.floor(Math.random()*255); 
+  blu = Math.floor(Math.random()*255); 
+  clr = "rgb("+red+","+grn+","+blu+")" ;
+  nc.setAttribute("fill",clr);
+
+    rx = 1;
+    ry = 1;
+    n1 = Math.floor((Math.random()*100)) ;
+    n2 = Math.floor((Math.random()*100)) ;
+    if (n1 > 50) {rx =-1} ;
+    if (n2 > 50) {ry =-1} ;
+
+    c[ncircles]  = nc ;
+    dx[ncircles] = Math.floor((Math.random()*10)+1) * rx  ;
+    dy[ncircles] = Math.floor((Math.random()*10)+1) * ry  ;    
+
+  document.getElementById("svg-node").appendChild(nc);
+  nextId += 1 ;
+  ncircles += 1;
+  
+  span = document.getElementById("sp1");
+  txt  = document.createTextNode(' : '+ncircles);
+  span.innerHTML = '';
+  span.appendChild(txt);
+ 
+}           
+
+</script>                             
+</head>
+
+<body onload="init()">
+<svg id="svg-node" xmlns='http://www.w3.org/2000/svg' version='1.1' width='820' height='620'>
+  <defs>
+    <clipPath id="clip1">
+      <path d="M0,0 h800 v600 h-800z"
+            clip-rule="evenodd" />
+    </clipPath>   
+  </defs>
+  <rect id="r1" x="0" y="0" width="800" height="600" fill="#eeeeee" stroke="black"/>
+  <g clip-path="URL(#clip1)" fill-opacity="0.8">
+    <circle id="c0"  cx="400" cy="300" r="15" fill="blue" />
+  </g>
+</svg>       
+
+<br>
+<button onClick="start()" id="btnStart">Start</button>  
+<button onClick="stop()" id="btnStop" disabled="true">Stop</button> 
+<button onClick="randomize()">Randomize</button> 
+<button onClick="addCircle()">Add a circle</button> 
+Circle count<span id="sp1"> : 1</span>
+</body>
+</html>
+
+

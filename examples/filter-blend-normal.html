@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Displacement filter</title>
+<meta name='description' content='Using a displacement map.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Thu May 9 12:03:00 CDT 2013' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'>
+
+<defs>
+  <filter color-interpolation-filters="sRGB" id="f1">
+    <feImage xlink:href="bunny.jpg" result="res1"/>
+    <feBlend mode="normal" in="res1" in2="SourceGraphic"/>
+  </filter>
+
+</defs>
+
+
+<g fill="#acc" stroke="#000">
+  <path id ="p1" d="M50,50 h400 v50 h-400 v50 h400 v50 h-400 v50 h400 v50 
+             h-400 v50 h400 v50 h-400 v50 h400 v-400 h-50 v400 h-50 v-400 
+	     h-50 v400 h-50 v-400 h-50 v400 h-50 v-400 h-50 v400 h-50 v-400" 
+	     filter="url(#f1)" />
+</g>
+</svg>
+</body>
+</html>             

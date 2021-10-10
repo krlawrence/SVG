@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SVG Path Tutor</title>
+<meta name='description' content='Allows interactive experiments with paths and related attributes.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Thu May  2 20:53:04 2013 CDT' />
+
+<script> 
+path   = null ;
+data   = null ;
+fill   = null ;
+stroke = null ;
+swidth = null ;
+lcap   = null ;
+ljoin  = null ;
+frule  = null ;
+dash   = null ;
+fopacity = null ;
+sopacity = null ;
+preset   = null ;
+coords   = null ;
+
+INITIAL_DATA     = "M300,200 h100 v100 h-100 z" ;
+INITIAL_FILL     = "none" ;
+INITIAL_STROKE   = "rgb(102,0,0)" ;
+INITIAL_SWIDTH   = "2" ;
+INITIAL_FRULE    = "evenodd" ;
+INITIAL_FOPACITY = "1.0" ;
+INITIAL_SOPACITY = "1.0" ;
+INITIAL_LCAP     = "square" ;
+INITIAL_LJOIN    = "miter" ;
+INITIAL_DASH     = "" ;
+
+function init()
+{
+  path   = document.getElementById("path") ;
+  data   = document.getElementById("data") ;
+  stroke = document.getElementById("stroke") ;
+  fill   = document.getElementById("fill") ;
+  swidth = document.getElementById("swidth") ;
+  lcap   = document.getElementById("lcap") ;
+  ljoin  = document.getElementById("ljoin") ;
+  frule  = document.getElementById("frule") ;
+  dash   = document.getElementById("dash") ;
+  sopacity  = document.getElementById("sopacity") ;
+  fopacity  = document.getElementById("fopacity") ;
+  preset    = document.getElementById("preset") ;
+  coords    = document.getElementById("coords") ;
+  reset();
+}     
+
+function reset()
+{
+  path.setAttribute("d",INITIAL_DATA) ;
+  path.setAttribute("fill",INITIAL_FILL) ;
+  path.setAttribute("stroke",INITIAL_STROKE) ;
+  path.setAttribute("stroke-width",INITIAL_SWIDTH) ;
+  path.setAttribute("fill-rule",INITIAL_FRULE) ;
+  path.setAttribute("stroke-opacity",INITIAL_SOPACITY) ;
+  path.setAttribute("fill-opacity",INITIAL_FOPACITY) ;
+  path.setAttribute("stroke-linecap",INITIAL_LCAP) ;
+  path.setAttribute("stroke-linejoin",INITIAL_LJOIN) ;
+  
+  data.value = INITIAL_DATA ;
+  fill.value = INITIAL_FILL ;
+  stroke.value = INITIAL_STROKE ;
+  swidth.value = INITIAL_SWIDTH ;
+  sopacity.value = INITIAL_SOPACITY ;
+  fopacity.value = INITIAL_FOPACITY ;
+  dash.value = INITIAL_DASH  ;
+  lcap.selectedIndex = 0;
+  ljoin.selectedIndex = 0;
+  frule.selectedIndex = 0;
+  preset.selectedIndex = 0;
+
+  draw() ;
+}
+
+function sample( obj )
+{
+ var idx = obj.selectedIndex;
+ var val = obj.options[idx].value;
+ data.value = val ;
+ draw() ;   
+}
+
+function draw()
+{
+  d = data.value ;
+  f = fill.value ;
+  s = stroke.value ; 
+  sw = swidth.value ;
+  fo = fopacity.value ;
+  so = sopacity.value ;
+  da = dash.value ;
+  fri = frule.selectedIndex ;
+  fr = frule.options[fri].value;
+  lci = lcap.selectedIndex ;
+  lc = lcap.options[lci].value;
+  lji = ljoin.selectedIndex ;
+  lj = ljoin.options[lji].value;
+  path.setAttribute("d",d) ;
+  path.setAttribute("fill",f) ;
+  path.setAttribute("stroke",s) ;
+  path.setAttribute("stroke-width",sw) ;
+  path.setAttribute("fill-rule",fr) ;
+  path.setAttribute("stroke-linecap",lc) ;
+  path.setAttribute("stroke-linejoin",lj) ;
+  path.setAttribute("fill-opacity",fo) ;
+  path.setAttribute("stroke-opacity",so) ;
+  path.setAttribute("stroke-dasharray",da) ;
+}
+
+function move(evt)
+{
+  x = evt.clientX-8  ;
+  y = evt.clientY-8  ;
+  coords.firstChild.nodeValue = "x="+x+" , y="+y;
+  
+  // TODO Use the real margin for the X,Y adjustment via code below (allowing for return value
+  // likely being in "px" units.  
+  // var p = document.getElementById("bdy");
+  // var style = p.currentStyle || window.getComputedStyle(p);
+  
+}
+
+</script>                             
+</head>
+
+<body onload="init()" id="bdy">
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='900' height='500'>
+  <defs>
+    <clipPath id="clip1">       
+      <path d="M0,0 h900 v500 h-900z"
+            clip-rule="evenodd" />
+    </clipPath>   
+  </defs>
+  <rect id="r1" onMousemove="move(event)" x="0" y="0" width="900" height="500" fill="#eeeeee" stroke="black"/>
+  <g clip-path="URL(#clip1)" stroke-opacity="0.8" stroke-width="4" fill="none">
+
+    <path    id="path" 
+              d="M0,0" 
+         stroke="" 
+           fill=""
+      fill-rule=""
+   stroke-width=""/>
+
+  <text id="coords" x="800" y="490" fill="#000">x= , y=</text>
+  </g>
+</svg>       
+
+<br>  
+<table>
+<tr>
+  <td align="right">fill</td> 
+  <td><input onChange="draw()" id="fill" value="None"></input></td>
+  <td align="right">fill-opacity</td> 
+  <td><input onChange="draw()" size="5" id="fopacity"></input></td>
+  <td align="right">line-cap</td>
+  <td> 
+    <select onChange="draw()" id="lcap">
+      <option value="butt">butt</option>
+      <option value="round">round</option>
+      <option value="square">square</option>
+    </select>
+  </td>
+  <td align="right">line-join</td>
+  <td> 
+    <select onChange="draw()" id="ljoin">
+      <option value="miter">miter</option>
+      <option value="round">round</option>
+      <option value="bevel">bevel</option>
+    </select>
+  </td>
+  <td align="right">dash-array</td>
+  <td><input onChange="draw()" id="dash"></input></td>
+</tr>  
+<tr>
+  <td align="right">stroke</td>
+  <td><input onChange="draw()" id="stroke"></input></td>
+  <td align="right">stroke-opacity </td>
+  <td><input onChange="draw()" size="5" id="sopacity"></input></td>
+  <td align="right">stroke-width</td>
+  <td><input onChange="draw()" size="5" id="swidth"></input></td>
+  <td align="right">fill-rule</td>
+  <td>
+    <select onChange="draw()" id="frule">
+      <option value="evenodd">evenodd</option>
+      <option value="winding">winding</option>
+    </select> 
+  </td> 
+</tr>
+</table>
+<br>
+<textarea onChange="draw()" id="data" rows="5" cols="90"></textarea>
+<br>
+<button onClick="draw()">Draw</button>
+<button onClick="reset()">Reset</button>
+<select onChange="sample(this)" id="preset">
+  <option value="M300,200 h100 v100 h-100 z">Square (relative)</option>
+  <option value="M300,200 H400 V300 H300 z">Square (absolute)</option>
+  <option value="M300,300 h200 l-100,-173z">Triangle</option>
+  <option value="M50,50 h600 v400 h-600z M100,100 h500 v300 h-500z M150,150 h400 v200 h-400z M200,200 h300 v100 h-300z">Rectangles</option>
+  <option value="M100,300 L200,200,300,300,400,200,500,300,600,200">Polyline</option>
+  <option value="M200,100 h 100 l 50,200 h-200z">Trapezoid</option>
+  <option value="M 300,250 a100,100,0,1,1,200,0 a100,100,0,1,1,-200,0z">Circle</option>
+  <option value="M 350,250 a50,50,0,1,1,100,0 a50,50,0,1,1,-100,0z M300,250 a100,100,0,1,1,200,0 a100,100,0,1,1,-200,0z">Donut</option>
+  <option value="M200,200 h200 q-100,125 -200,0z">D shape (quadratic).</option>
+  <option value="M350,250 l-100,0 a100,100,0,0,1,100,-100z">Pie slice</option>
+  <option value="M350,250 l-100,0 a100,100,0,0,1,100,-100z M 370,270 v-100  a100,100,0,1,1,-100,100z ">Pie chart</option>
+  <option value="M300,300 C300,100 500,100 500,300">Bezier arch</option>  
+  <option value="M100,50 h300 m0,100 h-300 m0,100 h300 m0,100 h-300">Horizontal lines</option>  
+  <option value="M100,50 v300 m100,0 v-300 m100,0 v300 m100,0 v-300">Vertical lines</option>  
+  <option value="M100,50 h300 m0,100 h-300 m0,100 h300 m0,100 h-300 M100,50 v300 m100,0 v-300 m100,0 v300 m100,0 v-300">Grid of lines</option>  
+  <option value="M50,50 h400 v50 h-400 v50 h400 v50 h-400 v50 h400 v50 h-400 v50 h400 v50 h-400 v50 h400 v-400 h-50 v400 h-50 v-400 h-50 v400 h-50 v-400 h-50 v400 h-50 v-400 h-50 v400 h-50 v-400">Grid of lines (continuous)</option>  
+  <option value="M100,100 L400,400 M150,100 L450,400 M200,100 L500,400 M250,100 L550,400">Diagonal lines (absolute)</option>  
+  <option value="M100,100 L400,400 m50,0 l-300,-300 m50,0 l300,300 m50,0 l-300,-300">Diagonal lines (relative)</option>  
+  <option value="M 150,350 h -100 v -200 h 25 v 25 h 25 v -25 h 25 v 25 h 25 v -25 h 25 v 25 h 25 v -25 h 25 v 25 h 25 v -25 h 25 v 25 h 25 v -25 h25 v 25 h 25 v -25 h 25 v 200 h -100  v -75 q -60,-75 -125,0 z  M 100 230 v 25 h 5 v -25 h 10 v -5 h -10 v -10 h -5 v 10 h -10 v 5 z M 320 230 v 25 h 5 v -25 h 10 v -5 h -10 v -10 h -5 v 10 h -10 v 5 z">Castle</option>  
+  <option value="M300,400 h100 l-100,-300 h100z">Intersecting lines</option>
+  <option value="M200,400 h200 v-100 h-200z M 300,400 h-100 l-100,-100 v-100 l100,100 m100,0 v100 m-0,-100 l-100,-100 h-100 m100,0 v-100 h100 l50,50 v100 h-100 v-100 h100 m-100,0 l-50,-50 m200,200 l-50,-50 m-100,0 h-100 v100">Cubes</option>
+  <option value="M150,250 q0,150,150,150 0,-150,150,-150  0,-150,-150,-150 0,150,-150,150">Axe head (quadratic)</option>
+  <option value="M50,250 C 50,50 250,50 250,250 C 250,450 50,450 50,250">Oval (Bezier)</option>
+  <option value="M 39,340 C 121,80 198,387 357,180">Curve (Bezier)</option>
+  <option value="M 251,439 C 60,147 315,149 108,439">Loop (Bezier)</option>
+  <option value="M 200 200 c 200,250 200 -50 0 200 c-200,-250 -200 50 0 -200 ">Loops (Bezier)</option>
+  <option value="m 239,255 c 34,-34 -222,-34 -188,0 35,34 34,-222 -1e-6,-188 -34,34 222,34 188,0 -34,-34 -34,222 0,188 z">Loopier (Bezier)</option>
+  <option value="M100,200 h100 v-100 a 25,25,0,0,1,50,0 v100 h100 a 25,25,0,0,1,0,50  h-100 v100 a 25,25,0,0,1,-50,0 v-100 h-100 a 25,25,0,0,1,0,-50z">Cross</option>
+  <option value="M100,200Q200,500,300,200 T 500 300">Smooth curve (quadratic)</option>
+  <option value="M300,200 Q550,300,300,400 h 300 Q350,300,600,200 q -150,-150,-300,0">Mushroom shape (quadratic)</option>
+  <option value="M50,250 h500 a 150 150 0,1,0,-250,0 a 150 150 0,1,1,-250,0">Arcs</option>
+  <option value="M550,250 a 150 150 0,1,0,-250,0 a 150 150 0,1,0,250,0 m -50,0 a112,112,0,1,0,-150,0 a112,112,0,1,0,150,0">Eight (arcs)</option>
+  <option value="M 223,366 C 208,377 111,377 96,366 82,356 51,263 57,246 62,229 141,171 159,171 c 18,0 97,57 103,74 6,17 -24,110 -39,121 z">Rounded pentagon (Bezier)</option>
+  <option value="M200,400 l-50,-200 a100,10,0,0,1,200,0 a100,10,0,0,1,-200,0 m 200,0 l-50,200 a50,10,0,0,0,-100,0 a50,10,0,0,0,100,0">Cup</option>
+  <option value="M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90z">Star</option>
+  <option value="M49,159,103,254,48,349,158,349,213,444,267,349,377,349,322,254,377,159,267,159,213,64,158,159,49,159">Koch snowflake (depth 1)</option>
+  <option value="M49,159,67,191,48,222,85,222,103,254,85,286,48,286,67,317,48,349,85,349,103,381,121,349,158,349,176,381,158,412,194,412,213,444,231,412,267,412,249,381,267,349,304,349,322,381,340,349,377,349,358,317,377,286,340,286,322,254,340,222,377,222,358,191,377,159,340,159,322,127,304,159,267,159,249,127,267,96,231,96,213,64,194,96,158,96,176,127,158,159,121,159,103,127,85,159,49,159z">Koch snowflake (depth 2)</option>  
+  <option value="M49,159,55,169,48,180,61,180,67,191,61,201,48,201,55,212,48,222,61,222,67,233,73,222,85,222,91,233,85,243,97,243,103,254,97,265,85,265,91,275,85,286,73,286,67,275,60,286,48,286,54,296,48,307,60,307,67,317,61,328,48,328,54,339,48,349,60,349,67,360,73,349,85,349,91,360,85,370,97,370,103,381,109,370,121,370,115,360,121,349,133,349,140,360,146,349,158,349,164,360,158,370,170,370,176,381,170,391,158,391,164,402,158,412,170,412,176,423,182,412,194,412,200,423,194,434,206,434,213,444,219,434,231,434,225,423,231,412,243,412,249,423,255,412,267,412,261,402,267,391,255,391,249,381,255,370,267,370,261,360,267,349,279,349,285,360,292,349,304,349,310,360,304,370,316,370,322,381,328,370,340,370,334,360,340,349,352,349,358,360,365,349,377,349,371,339,377,328,364,328,358,317,365,307,377,307,371,296,377,286,365,286,358,275,352,286,340,286,334,275,340,265,328,265,322,254,328,243,340,243,334,233,340,222,352,222,358,233,364,222,377,222,370,212,377,201,364,201,358,191,364,180,377,180,370,169,377,159,364,159,358,148,352,159,340,159,334,148,340,138,328,138,322,127,316,138,304,138,310,148,304,159,291,159,285,148,279,159,267,159,261,148,267,138,255,138,249,127,255,117,267,117,261,106,267,96,255,96,249,85,243,96,231,96,225,85,231,75,219,75,213,64,206,75,194,75,200,85,194,96,182,96,176,85,170,96,158,96,164,106,158,117,170,117,176,127,170,138,158,138,164,148,158,159,146,159,140,148,134,159,121,159,115,148,121,138,109,138,103,127,97,138,85,138,91,148,85,159,73,159,67,148,61,159,49,159z">Koch snowflake (depth 3)</option>
+</select> 
+
+<div style="color:blue;font-size:115%;width:80%">
+<br>
+Try changing a few things in the path string then click &quot;draw&quot; to see 
+  the results. For the other fields, any valid SVG values may be used, so for example the color red could be written 
+  as any of: red, #f00, #ff0000, rgb(255,0,0) or rgb(100%,0%,0%). You can also
+  try using some of the examples from the drop down list above if you don't feel
+  ready to start editing the path directly. Remember in the path syntax, upper case letters mean
+  use absolute coordinates and lower case ones mean use relative coordinates.
+</div>
+</body>
+</html>
+
+

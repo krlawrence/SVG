@@ -1,0 +1,33 @@
+<?xml version="1.0" standalone="yes"?>
+<!-- ========================================================  -->
+<!-- basicshapes.svg                                           -->
+<!--                                                           -->
+<!-- Simple file to test various SVG basic shapes.             -->
+<!--                                                           -->
+<!--                                                           -->
+<!-- Author : Kelvin R. Lawrence   5th-May-1999                -->
+<!-- ========================================================  -->
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' style="stroke-antialiasing:true" width="1000" height="1000">
+  <text x="5" y="20" style="font-size:22">SVG Demo: Basic SVG shapes</text>
+
+  <g style="stroke:black; fill:none; stroke-antialiasing:true" >
+    <circle cx="70"  cy="100" r="50"  />
+    <rect x="150" y="50" width="135" height="100" />
+    <line x1="325" y1="150" x2="375" y2="50" />
+    <line x1="375" y1="50"  x2="425" y2="150" />
+    <polyline points="50,250,75,350,100,250,125,350,150,250,175,350" />
+    <polygon points="250,250,297,284,279,340,220,340,202,284,250,250" />
+    <ellipse cx="400" cy="300" rx="72" ry="50" />
+  </g>
+
+
+  <g style="stroke-antialiasing:false">
+    <text x="50"  y="175">Circle</text>
+    <text x="175" y="175">Rectangle</text>
+    <text x="355" y="175">Lines</text>
+    <text x="50"  y="375">Polyline</text>
+    <text x="225" y="375">Polygon</text>
+    <text x="375" y="375">Ellipse</text>
+  </g>
+
+</svg>

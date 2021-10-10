@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Displacement filter</title>
+<meta name='description' content='Using a displacement map to create a jagged edge.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Mon May 6 13:50:00 CDT 2013' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'>
+
+<defs>
+  <filter color-interpolation-filters="sRGB" id="f1">
+    <feTurbulence result="res1" baseFrequency="0.04" type="turbulence"  numOctaves="3" />
+    <feDisplacementMap in="SourceGraphic" in2="res1" scale="15"
+                       xChannelSelector="R" yChannelSelector="B"/>
+  </filter>
+
+</defs>
+
+<rect x="50"  y="85" width="200" height="200" ry="7" fill="#a05a2c"  />
+<rect x="300" y="85" width="200" height="200" ry="7" fill="#a05a2c" filter="url(#f1)" />
+<g fill="black">
+  <text x="50"  y="320">Before</text>
+  <text x="300" y="320">After filter</text>
+</g>
+</svg>
+</body>
+</html>             

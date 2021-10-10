@@ -1,0 +1,29 @@
+<head>
+<meta name='description' content='Draws a simple castle using path commands.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Tue Jun 05 17:04:29 -0500 2012' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'>
+        
+<defs>
+  <pattern id="plaster" x="0" y="0" width="64" height="64" patternUnits="userSpaceOnUse">
+    <image width="231" height="231" xlink:href="plaster.jpg" />
+  </pattern>  
+</defs>
+ 
+<g stroke="black" fill="url(#plaster)" stroke-width="3" >
+
+  <path d="M 150,350 h -100 v -200 h 25 v 25 h 25 v -25 h 25 v 25 h 25 v -25
+                     h 25 v 25 h 25 v -25 h 25 v 25 h 25 v -25 h 25 v 25
+                     h 25 v -25 h25 v 25 h 25 v -25 h 25 v 200 h -100
+                     v -75 q -60,-75 -125,0 z
+                     M 100 230 v 25 h 5 v -25 h 10 v -5 h -10 v -10 h -5
+                     v 10 h -10 v 5 z
+                     M 320 230 v 25 h 5 v -25 h 10 v -5 h -10 v -10 h -5
+                     v 10 h -10 v 5 z" />
+</g>
+</svg>
+</body>
+</html>
+

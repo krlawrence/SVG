@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ripple a color thru a set of circles</title>
+<meta name='description' content='Uses script to change colors.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Sat Apr 20 17:11:50 CDT 2013' />
+
+<script> 
+TOTAL_CIRCLES = 25;
+cid = new Array() ;
+fill = new Array() ;
+idx  = 0 ;
+direction = -1;
+
+// LATER: Once the HTML5 spec and implementations stabilize, it will likely
+//        be appropriate to use requestAnimationFrame instead of a generic
+//        timer function based on setInterval.
+
+function init()
+{
+  for (i=0; i< TOTAL_CIRCLES; i++)
+  {
+    cid[i] = document.getElementById("c"+i) ;
+    fill[i] = cid[i].getAttribute("fill") ;
+  }
+}     
+
+function reverse()
+{
+  direction = -direction;
+}
+
+function start()
+{
+  document.getElementById("btnStart").disabled=true ;
+  document.getElementById("btnStop").disabled=false ;
+  intv = window.setInterval("move()",16);
+}
+
+function stop()
+{
+  document.getElementById("btnStart").disabled=false ;
+  document.getElementById("btnStop").disabled=true;
+  window.clearInterval(intv);
+}
+
+function move()
+{                   
+  //cid[idx].setAttribute("fill","blue") ;
+  cid[idx].setAttribute("fill","silver") ;
+  prev = idx-direction;
+  if ( prev < 0 )
+  {
+    prev = TOTAL_CIRCLES -1 ;
+  }
+  if ( prev >= TOTAL_CIRCLES )
+  {
+    prev = 0 ;
+  }
+
+  cid[prev].setAttribute("fill",fill[prev]);
+ 
+  idx += direction ;
+  if ( idx >= TOTAL_CIRCLES )
+  {
+    idx = 0 ;
+  }
+  if ( idx < 0 )
+  {
+    idx = TOTAL_CIRCLES -1 ;
+  }
+}
+
+</script>                             
+</head>
+
+<body onload="init()">
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='820' height='610'>
+<g stroke='none' transform='translate(50,50)'>
+<circle id="c0" cx='250' cy='250' r='250' fill='orangered'/>
+<circle id="c1" cx='250' cy='250' r='240' fill='lightsalmon'/>
+<circle id="c2" cx='250' cy='250' r='230' fill='orangered'/>
+<circle id="c3" cx='250' cy='250' r='220' fill='lightsalmon'/>
+<circle id="c4" cx='250' cy='250' r='210' fill='orangered'/>
+<circle id="c5" cx='250' cy='250' r='200' fill='lightsalmon'/>
+<circle id="c6" cx='250' cy='250' r='190' fill='orangered'/>
+<circle id="c7" cx='250' cy='250' r='180' fill='lightsalmon'/>
+<circle id="c8" cx='250' cy='250' r='170' fill='orangered'/>
+<circle id="c9" cx='250' cy='250' r='160' fill='lightsalmon'/>
+<circle id="c10" cx='250' cy='250' r='150' fill='orangered'/>
+<circle id="c11" cx='250' cy='250' r='140' fill='lightsalmon'/>
+<circle id="c12" cx='250' cy='250' r='130' fill='orangered'/>
+<circle id="c13" cx='250' cy='250' r='120' fill='lightsalmon'/>
+<circle id="c14" cx='250' cy='250' r='110' fill='orangered'/>
+<circle id="c15" cx='250' cy='250' r='100' fill='lightsalmon'/>
+<circle id="c16" cx='250' cy='250' r='90' fill='orangered'/>
+<circle id="c17" cx='250' cy='250' r='80' fill='lightsalmon'/>
+<circle id="c18" cx='250' cy='250' r='70' fill='orangered'/>
+<circle id="c19" cx='250' cy='250' r='60' fill='lightsalmon'/>
+<circle id="c20" cx='250' cy='250' r='50' fill='orangered'/>
+<circle id="c21" cx='250' cy='250' r='40' fill='lightsalmon'/>
+<circle id="c22" cx='250' cy='250' r='30' fill='orangered'/>
+<circle id="c23" cx='250' cy='250' r='20' fill='lightsalmon'/>
+<circle id="c24" cx='250' cy='250' r='10' fill='orangered'/>
+</g>        
+</svg>       
+
+<br>
+<button onClick="start()" id="btnStart">Start</button>  
+<button onClick="stop()"  id="btnStop" disabled="true">Stop</button> 
+<button onClick="reverse()">Change direction</button> 
+</body>
+</html>

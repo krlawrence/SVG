@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!-- Note. This example uses values above 1.0 which make sense but the SVG spec officially says values should -->
+<!-- be between 0 and 1. This example works in Chrome but not in Firefox. I need to investigate whether it    -->
+<!-- should or should not really work per the latest SVG spec.                                                -->
+<html>
+<head>
+<title>Saturation filter</title>
+<meta name='description' content='Saturation filter using values above 1.' />
+<meta name='author' content='Kelvin R. Lawrence' />
+<meta name='created' content='Mon May 6 13:51:00 CDT 2013' />
+</head>
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1000' height='1000'>
+
+<defs>
+  <filter color-interpolation-filters="sRGB" id="f1">
+    <feColorMatrix type="saturate" values="1.2"/>
+  </filter>
+  <filter color-interpolation-filters="sRGB" id="f2">
+    <feColorMatrix type="saturate" values="1.5"/>
+  </filter>
+  <filter color-interpolation-filters="sRGB" id="f3">
+    <feColorMatrix type="saturate" values="4.0"/>
+  </filter>
+</defs>
+
+<image x="20"  y="20"  width="320" height="240" xlink:href="bunny.jpg" />
+<image x="400" y="20"  width="320" height="240" xlink:href="bunny.jpg" filter="url(#f1)"/>
+<image x="20"  y="300" width="320" height="240" xlink:href="bunny.jpg" filter="url(#f2)"/>
+<image x="400" y="300" width="320" height="240" xlink:href="bunny.jpg" filter="url(#f3)"/>
+
+<g fill="black">
+  <text x="20"  y="280">Original</text>
+  <text x="400" y="280">Saturation = 1.2</text>
+  <text x="20"  y="560">Saturation = 1.5</text>
+  <text x="400" y="560">Saturation = 4.0</text>
+</g>
+</svg>
+
+</body>
+</html>             
+
+
