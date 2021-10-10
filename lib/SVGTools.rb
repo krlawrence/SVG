@@ -65,6 +65,10 @@
 #     Need to push/pop attributes before group is created and after it ends.
 
 class SVGTools
+attr_reader :version, :versionDate, :metadata
+attr_accessor :fill, :stroke, :fillopacity, :strokewidth, :strokeopacity,
+              :opacity, :gfill, :gstroke, :linecap, :gfillopacity,
+              :title, :transform, :dasjarray, :id
 
 
 def initialize
