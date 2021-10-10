@@ -18,10 +18,10 @@ used somewhere in these files. If you are interested in learning a bit more abou
 as the "artwork" as some pictures may look the same but might have been created using different SVG techniques.
 
 With a few exceptions, all of the examples were either hand coded (by me) or produced using Ruby scripts I created to generate SVG output. One or two of the examples were
-produced using Inkscape. 
+produced using Inkscape. The `examples` folder contains over 900 SVG, HTML and JPG files. If you want to view the files in a browser you can eiter navigate to [this webpage](https://kelvinlawrence.net/svg/) or download the contents of the `examples` folder along with the contents of the `webpage` folder.
 
 ## Ruby scripts and other files
-In the `/lib` folder there is a Ruby class, `SVGTools.rb` that provides a set of helper methods used by many of the scripts in the `generators` folder. The `webpage` folder contains the structural HTML files needed in order to view all of the examples, along with an index frame, in a browser. Most of the examples were tested using the Google Chrome browser but should also work, for the most part, in other browsers. SVG support across browsers remains a little inconsistent.
+In the `/lib` folder there is a Ruby class, `SVGTools.rb` that provides a set of helper methods used by many of the scripts in the `generators` folder. The `webpage` folder contains the structural HTML files needed in order to view all of the examples, along with an index frame, in a browser. Most of the examples were tested using the Google Chrome browser but should also work, for the most part, in other browsers. SVG support across browsers remains a little inconsistent. Also in the `webpage` folder, is a Ruby script called `makeindex2.rb` that can be used to generate the `index2.html` file should it ever need rebuilding.
 
 Most of this material was first published in 2013 with incremental additions made through the end of 2016. This repository was mainly created to give all the examples and scripts a safer place to live than a personal web site.
 
