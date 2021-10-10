@@ -21,9 +21,9 @@ With a few exceptions, all of the examples were either hand coded (by me) or pro
 produced using Inkscape. The `examples` folder contains over 900 SVG, HTML and JPG files. If you want to view the files in a browser you can either navigate to [this webpage](https://kelvinlawrence.net/svg/) or download the contents of the `examples` folder along with the contents of the `webpage` folder and open the `index.html` file in your browser.
 
 ## Ruby scripts and other files
-In the `/lib` folder there is a Ruby class, `SVGTools.rb` that provides a set of helper methods used by many of the scripts in the `generators` folder. The `webpage` folder contains the structural HTML files needed in order to view all of the examples, along with an index frame, in a browser. Most of the examples were tested using the Google Chrome browser but should also work, for the most part, in other browsers. SVG support across browsers remains a little inconsistent. Also in the `webpage` folder, is a Ruby script called `makeindex2.rb` that can be used to generate the `index2.html` file should it ever need rebuilding.
+In the `/lib` folder there is a Ruby class, `SVGTools.rb` that provides a set of helper methods used by many of the scripts in the `generators` folder. The `webpage` folder contains the structural HTML files needed to view all of the examples, along with an alphabetical index, in a browser. Most of the examples were tested using the Google Chrome browser but should also work, for the most part, in other browsers. SVG support across browsers remains a little inconsistent. Also in the `webpage` folder, is a Ruby script called `makeindex2.rb` that can be used to generate the `index2.html` file should it ever need rebuilding.
 
-Most of this material was first published in 2013 with incremental additions made through the end of 2016. This repository was mainly created to give all the examples and scripts a safer place to live than a personal web site.
+While some of the files date back as far as 1998, the examples were first published in 2013 with incremental additions made through the end of 2016. This repository was mainly created to give all the examples and scripts a safer place to live than a personal web site.
 
 ## Happy SVG-ing
 
