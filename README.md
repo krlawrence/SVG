@@ -18,7 +18,7 @@ used somewhere in these files. If you are interested in learning a bit more abou
 as the "artwork" as some pictures may look the same but might have been created using different SVG techniques.
 
 With a few exceptions, all of the examples were either hand coded (by me) or produced using Ruby scripts I created to generate SVG output. One or two of the examples were
-produced using Inkscape. The `examples` folder contains over 900 SVG, HTML and JPG files. If you want to view the files in a browser you can eiter navigate to [this webpage](https://kelvinlawrence.net/svg/) or download the contents of the `examples` folder along with the contents of the `webpage` folder.
+produced using Inkscape. The `examples` folder contains over 900 SVG, HTML and JPG files. If you want to view the files in a browser you can either navigate to [this webpage](https://kelvinlawrence.net/svg/) or download the contents of the `examples` folder along with the contents of the `webpage` folder and open the `index.html` file in your browser.
 
 ## Ruby scripts and other files
 In the `/lib` folder there is a Ruby class, `SVGTools.rb` that provides a set of helper methods used by many of the scripts in the `generators` folder. The `webpage` folder contains the structural HTML files needed in order to view all of the examples, along with an index frame, in a browser. Most of the examples were tested using the Google Chrome browser but should also work, for the most part, in other browsers. SVG support across browsers remains a little inconsistent. Also in the `webpage` folder, is a Ruby script called `makeindex2.rb` that can be used to generate the `index2.html` file should it ever need rebuilding.
