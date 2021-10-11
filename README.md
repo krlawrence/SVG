@@ -1,7 +1,8 @@
-![Welcome image](images/Welcome2.png)
 # SVG Samples and Tools
+![Welcome image](images/Welcome2.png)
 
-This repository contains a large number of SVG examples created between 1989 and 2016. You will also find Ruby scripts and other tools that were used to create many of them. All of the examples can be previewed by [here](https://kelvinlawrence.net/svg/).
+## Welcome
+This repository contains a large number of SVG examples created between 1989 and 2016 as SVG itself evolved from modest beginninngs to broad adoption. You will also find Ruby scripts and other tools that were used to create many of sample files. All of the examples can be previewed [here](https://kelvinlawrence.net/svg/).
 
 ## What is SVG?
 SVG, short for "Scalable Vector Graphics", is an XML markup language designed for bringing 2D artwork and drawings to the Web and other places. As well as vector graphics (lines, circles, paths, etc.) SVG supports text, images, animation, scripting, colors, gradients, filter effects and CSS styling.  It is a very rich (declarative) graphics language which can be just as easily hand coded or machine generated.
