@@ -1,4 +1,4 @@
-![Welcome image](../images/Welcome2.png)
+![Welcome image](images/Welcome2.png)
 # SVG Samples and Tools
 
 This repository contains a large number of SVG examples created between 1989 and 2016. You will also find Ruby scripts and other tools that were used to create many of them. All of the examples can be previewed by [here](https://kelvinlawrence.net/svg/).
